@@ -136,7 +136,7 @@ export default function Teams() {
         <div ref={stackRef} className="relative min-h-[230vh] hidden md:block">
           <motion.div
             style={{ boxShadow: techShadow }}
-            className="sticky top-24 z-20 rounded-4xl border border-white/5 bg-[#08080c] px-10 md:px-14 py-12 md:py-16"
+            className="sticky top-8 z-20 rounded-4xl border border-white/5 bg-[#08080c] px-10 md:px-14 py-12 md:py-16"
           >
             <DomainSection
               title="Technical Domains"
@@ -147,7 +147,7 @@ export default function Teams() {
 
           <motion.div
             style={{ y: creativeY, boxShadow: creativeShadow }}
-            className="sticky top-24 z-30 mt-16 rounded-4xl border border-white/5 bg-[#08080c] px-10 md:px-14 py-12 md:py-16"
+            className="sticky top-8 z-30 mt-16 rounded-4xl border border-white/5 bg-[#08080c] px-10 md:px-14 py-12 md:py-16"
           >
             <DomainSection
               title="Creative Domains"
