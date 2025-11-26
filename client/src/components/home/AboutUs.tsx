@@ -2,7 +2,10 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import SplitText from "./SplitText";
+import SplitText from "../SplitText";
+
+import InteractiveGridPattern from "./InteractiveGridPattern";
+import BackgroundMorph from "./BackgroundMorph";
 
 export default function AboutUs() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,7 +23,19 @@ export default function AboutUs() {
       className="relative min-h-screen w-full bg-black text-white overflow-hidden py-16 px-6 md:px-12 lg:px-24 flex flex-col justify-center"
     >
       {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden">
+        <BackgroundMorph />
+        <div
+          className="absolute inset-0"
+          style={{
+            maskImage:
+              "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
+          }}
+        >
+          <InteractiveGridPattern />
+        </div>
         <div className="absolute top-1/4 -left-20 w-96 h-96 bg-acm-blue/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-900/10 rounded-full blur-[100px]" />
       </div>
@@ -97,7 +112,7 @@ export default function AboutUs() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: "circOut" }}
-            className="w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mt-12"
+            className="w-full h-px bg-linear-to-r from-transparent via-gray-700 to-transparent mt-12"
           />
         </div>
       </div>

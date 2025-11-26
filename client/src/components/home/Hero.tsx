@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import AnimatedText from "./AnimatedText";
-import SplitText from "./SplitText";
+import AnimatedText from "../AnimatedText";
+import SplitText from "../SplitText";
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
@@ -51,7 +51,7 @@ export default function Hero() {
                 height: square.size,
                 left: `${square.x}%`,
                 top: `${square.y}%`,
-                borderRadius: "4px",
+                borderRadius: "8px",
               }}
               animate={{
                 y: [0, -80, 0],
@@ -87,7 +87,7 @@ export default function Hero() {
               width: "800px",
               height: "800px",
               background:
-                "radial-gradient(circle, rgba(0, 133, 202, 0.5) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(0, 133, 202, 0.5) 0%, transparent 50%)",
               filter: "blur(100px)",
             }}
             animate={{
@@ -106,7 +106,7 @@ export default function Hero() {
               width: "700px",
               height: "700px",
               background:
-                "radial-gradient(circle, rgba(0, 163, 255, 0.4) 20%, transparent 70%)",
+                "radial-gradient(circle, rgba(0, 163, 255, 0.4) 20%, transparent 50%)",
               filter: "blur(120px)",
             }}
             animate={{
@@ -125,7 +125,7 @@ export default function Hero() {
               width: "600px",
               height: "600px",
               background:
-                "radial-gradient(circle, rgba(0, 133, 202, 0.35) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(0, 133, 202, 0.35) 0%, transparent 50%)",
               filter: "blur(110px)",
             }}
             animate={{
@@ -171,23 +171,21 @@ export default function Hero() {
           <div className="mb-6 max-w-6xl">
             <AnimatedText delay={0.4}>
               <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold font-display leading-[1.1] tracking-tight mb-4">
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-100 to-gray-300">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-acm-blue to-acm-blue-light">
                   The Next Era of
                 </span>
               </h1>
             </AnimatedText>
 
             <AnimatedText delay={0.6}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display xl:text-7xl font-bold leading-[1.1] tracking-tight">
-                <span className="bg-linear-to-r from-acm-blue via-acm-blue-light to-acm-blue bg-clip-text text-transparent">
-                  GGSIPU EDC ACM
-                </span>
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.9] tracking-tight">
+                <span className="text-white">GGSIPU EDC ACM</span>
               </h1>
             </AnimatedText>
 
             <AnimatedText delay={0.8}>
               <h1 className="text-4xl md:text-5xl font-display lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight mt-2">
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-100 to-gray-200">
+                <span className="text-6xl md:text-8xl lg:text-9xl font-display font-bold leading-[0.9] tracking-tight">
                   Student Chapter
                 </span>
               </h1>

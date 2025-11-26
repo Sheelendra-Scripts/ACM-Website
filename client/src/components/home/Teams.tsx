@@ -11,7 +11,7 @@ import {
   Palette,
   LucideIcon,
 } from "lucide-react";
-import AnimatedText from "./AnimatedText";
+import AnimatedText from "../AnimatedText";
 import { useRef } from "react";
 
 interface TeamProps {

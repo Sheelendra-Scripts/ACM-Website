@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
-import SplitText from "./SplitText";
+import SplitText from "../SplitText";
 
 interface Event {
   id: number;
