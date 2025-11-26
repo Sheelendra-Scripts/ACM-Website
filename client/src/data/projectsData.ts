@@ -24,7 +24,7 @@ export const projects: Project[] = [
     description:
       "Solstice reimagines the cinema experience for a distributed world. We built a browser-based screening room where film premieres unfold with Dolby Atmos spatial audio, real-time chat overlays that pulse with audience emotion, and volumetric lighting that syncs to each scene's color temperature. The result: 92 countries tuned in simultaneously, racking up 11.4 million watch minutes during a single festival weekend.",
     metrics: ["92 countries", "11.4M watch minutes", "Realtime color grading"],
-    tone: "from-acm-blue/40 via-indigo-500/40 to-purple-500/30",
+    tone: "acm-blue",
     image: "/assets/project_showcase_1.webp",
     tags: ["Web GL", "Spatial Audio", "React", "Three.js"],
     year: "2024",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     description:
       "Pulse connects biometric wearables with narrative journaling to create a wellbeing ecosystem for 18 university labs. Our dashboards don't just chart heart rates—they breathe. Data visualizations expand and contract like lungs, helping researchers understand stress patterns at a glance. Four custom neural models power anomaly detection, and the system has maintained zero downtime since launch.",
     metrics: ["18 labs", "4 neural models", "Zero downtime"],
-    tone: "from-emerald-500/40 via-sky-500/30 to-cyan-500/30",
+    tone: "acm-blue",
     image: "/assets/project_showcase_2.webp",
     tags: ["AI/ML", "Health Tech", "D3.js", "Python"],
     year: "2024",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     description:
       "Archive° is a living museum that weaves together 120 oral histories, 35 terabytes of photos and videos, and thousands of code commits into a navigable timeline. AI-powered curation surfaces forgotten stories when you least expect them. The interface feels like wandering through seasons: spring batches bloom with new recruits, winter preserves legacy projects in crystalline detail.",
     metrics: ["120 stories", "35TB media", "AI curation"],
-    tone: "from-orange-500/40 via-rose-500/30 to-yellow-400/30",
+    tone: "acm-blue",
     image: "/assets/project_showcase_3.webp",
     tags: ["Archive", "AI", "Next.js", "Supabase"],
     year: "2023",
@@ -75,7 +75,7 @@ export const projects: Project[] = [
     description:
       "Nebula turns brainstorming into a cosmic experience. Ideas float as luminous nodes that team members can drag, connect, and cluster. The physics engine simulates gentle gravitational pull, so related concepts naturally drift together. Used by 12 ACM project teams for sprint planning, it's become the default tool for turning chaos into constellations.",
     metrics: ["12 teams", "4,200 boards", "Real-time sync"],
-    tone: "from-violet-500/40 via-fuchsia-500/30 to-pink-400/30",
+    tone: "acm-blue",
     image: "/assets/project_showcase_1.webp",
     tags: ["Collaboration", "WebSocket", "Canvas API", "React"],
     year: "2024",
@@ -91,7 +91,7 @@ export const projects: Project[] = [
     description:
       "Cipher is where code meets competition. Real-time leaderboards update as contestants submit, with instant feedback powered by sandboxed execution environments. The interface pulses with urgency: timers count down, rankings shuffle, and spectators watch highlighted solutions unfold character by character. Over 800 participants have battled across 24 contests.",
     metrics: ["800+ users", "24 contests", "50ms judging"],
-    tone: "from-red-500/40 via-orange-500/30 to-amber-400/30",
+    tone: "acm-blue",
     image: "/assets/project_showcase_2.webp",
     tags: ["Competitive", "Docker", "Go", "WebSocket"],
     year: "2023",

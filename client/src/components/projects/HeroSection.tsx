@@ -1,78 +1,176 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useMemo } from "react";
-import CinematicRevealText from "@/components/CinematicRevealText";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function HeroSection() {
-  const stats = useMemo(
-    () => [
-      { label: "Studios", value: "07" },
-      { label: "Live Projects", value: "28" },
-      { label: "Awards", value: "16" },
-      { label: "Chapters", value: "42" },
-    ],
-    []
-  );
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-24 pt-32">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,136,204,0.35),rgba(0,0,0,0))]" />
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.05)_1px,_transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,_transparent_1px)",
-          backgroundSize: "120px 120px",
-        }}
-      />
-      <div className="absolute inset-x-0 top-0 h-64 bg-linear-to-b from-acm-blue/40 via-transparent to-transparent" />
-      <div className="absolute inset-x-1/4 top-0 bottom-0 hidden md:flex">
-        {[0, 1, 2].map((index) => (
-          <div key={index} className="relative flex-1">
-            <span className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-white/10" />
-          </div>
-        ))}
-      </div>
+    <section ref={containerRef} className="relative h-[100vh] overflow-hidden">
+      {/* Sticky container */}
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {/* Background */}
+        <div
+          className="absolute inset-0 bg-black"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 133, 202, 0.15), transparent), linear-gradient(180deg, #000 0%, #050510 100%)",
+          }}
+        />
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 flex max-w-5xl flex-col items-center text-center"
-      >
-        <p className="font-mono text-xs uppercase tracking-[0.8em] text-white/50">
-          Projects Archive
-        </p>
-        <CinematicRevealText className="mt-6">
-          <h1 className="text-5xl md:text-7xl font-display font-bold leading-tight">
-            Stories crafted like midnight premieres and engineered with ACM
-            precision.
-          </h1>
-        </CinematicRevealText>
-        <p className="mt-8 max-w-2xl text-base text-white/60">
-          Every project is treated like a film: table reads, script rewrites,
-          choreography, and a crew list. Scroll to step into each act.
-        </p>
-      </motion.div>
+        {/* Floating particles - optimized */}
+        <FloatingParticles />
 
-      <div className="relative z-10 mt-16 grid w-full max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
-        {stats.map((stat) => (
+        {/* Grid lines */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, white 1px, transparent 1px), linear-gradient(white 1px, transparent 1px)",
+            backgroundSize: "100px 100px",
+          }}
+        />
+
+        {/* Main content */}
+        <motion.div
+          style={{ y, opacity, scale }}
+          className="relative z-10 flex h-full flex-col items-center justify-center px-6 will-change-transform"
+        >
+          {/* Eyebrow */}
           <motion.div
-            key={stat.label}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="rounded-2xl border border-white/5 bg-white/5 px-4 py-6 text-center backdrop-blur"
+            viewport={{ once: false, amount: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-8 flex items-center gap-4"
           >
-            <p className="text-4xl font-semibold text-white">{stat.value}</p>
-            <p className="text-xs uppercase tracking-[0.4em] text-white/50">
-              {stat.label}
-            </p>
+            <span className="h-px w-12 bg-acm-blue/50" />
+            <span className="font-mono text-xs uppercase tracking-[0.5em] text-white/50">
+              Our Work
+            </span>
+            <span className="h-px w-12 bg-acm-blue/50" />
           </motion.div>
-        ))}
+
+          {/* Main title */}
+          <div className="overflow-hidden">
+            <motion.h1
+              initial={{ y: 100, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: false, amount: 0.35, margin: "-10% 0px" }}
+              transition={{ duration: 1, ease: [0.25, 1, 0.5, 1], delay: 0.4 }}
+              className="text-center text-6xl font-display font-bold leading-[0.9] tracking-tight md:text-8xl lg:text-9xl"
+            >
+              <span className="block text-white">Projects that</span>
+              <span className="block text-acm-blue">breathe.</span>
+            </motion.h1>
+          </div>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-8 max-w-2xl text-center text-lg text-white/60 md:text-xl"
+          >
+            Every pixel tells a story. Every interaction is choreographed.
+            <br className="hidden md:block" />
+            Welcome to the ACM portfolio.
+          </motion.p>
+
+          {/* Stats row */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.8 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="mt-16 flex gap-12 md:gap-20"
+          >
+            {[
+              { value: "05", label: "Projects" },
+              { value: "∞", label: "Iterations" },
+              { value: "24/7", label: "Dedication" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-4xl font-bold text-white md:text-5xl">
+                  {stat.value}
+                </div>
+                <div className="mt-1 font-mono text-xs uppercase tracking-[0.3em] text-white/40">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false, amount: 0.8 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-2"
+            >
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
+                Scroll to explore
+              </span>
+              <div className="h-12 w-px bg-acm-blue/30" />
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
+  );
+}
+
+function FloatingParticles() {
+  // Reduced particle count for performance
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    x: (i * 37) % 100,
+    y: (i * 53) % 100,
+    size: 2 + (i % 3),
+    duration: 15 + (i % 10) * 2,
+    delay: i * 0.3,
+  }));
+
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full bg-acm-blue/30 will-change-transform"
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: p.size,
+            height: p.size,
+          }}
+          animate={{
+            y: [0, -100, 0],
+            opacity: [0, 0.6, 0],
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: "linear",
+          }}
+        />
+      ))}
+    </div>
   );
 }
