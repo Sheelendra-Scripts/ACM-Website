@@ -15,7 +15,7 @@ export default function HeroSection() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
   return (
-    <section ref={containerRef} className="relative h-[100vh] overflow-hidden">
+    <section ref={containerRef} className="relative h-[110vh] overflow-hidden">
       {/* Sticky container */}
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* Background */}
@@ -27,37 +27,37 @@ export default function HeroSection() {
           }}
         />
 
-        {/* Floating particles - optimized */}
+        {/* Floating particles - optimized, fewer on mobile */}
         <FloatingParticles />
 
-        {/* Grid lines */}
+        {/* Grid lines - smaller grid on mobile */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
               "linear-gradient(90deg, white 1px, transparent 1px), linear-gradient(white 1px, transparent 1px)",
-            backgroundSize: "100px 100px",
+            backgroundSize: "60px 60px",
           }}
         />
 
         {/* Main content */}
         <motion.div
           style={{ y, opacity, scale }}
-          className="relative z-10 flex h-full flex-col items-center justify-center px-6 will-change-transform"
+          className="relative z-10 flex h-full flex-col items-center justify-center px-4 will-change-transform md:px-6"
         >
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.8 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8 flex items-center gap-4"
+            className="mb-6 flex items-center gap-3 md:mb-8 md:gap-4"
           >
-            <span className="h-px w-12 bg-acm-blue/50" />
-            <span className="font-mono text-xs uppercase tracking-[0.5em] text-white/50">
+            <span className="h-px w-8 bg-acm-blue/50 md:w-12" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 md:text-xs md:tracking-[0.5em]">
               Our Work
             </span>
-            <span className="h-px w-12 bg-acm-blue/50" />
+            <span className="h-px w-8 bg-acm-blue/50 md:w-12" />
           </motion.div>
 
           {/* Main title */}
@@ -65,9 +65,9 @@ export default function HeroSection() {
             <motion.h1
               initial={{ y: 100, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.35, margin: "-10% 0px" }}
+              viewport={{ once: true, amount: 0.35, margin: "-10% 0px" }}
               transition={{ duration: 1, ease: [0.25, 1, 0.5, 1], delay: 0.4 }}
-              className="text-center text-6xl font-display font-bold leading-[0.9] tracking-tight md:text-8xl lg:text-9xl"
+              className="text-center font-display text-5xl font-bold leading-[0.9] tracking-tight md:text-8xl lg:text-9xl"
             >
               <span className="block text-white">Projects that</span>
               <span className="block text-acm-blue">breathe.</span>
@@ -78,56 +78,64 @@ export default function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.8 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-8 max-w-2xl text-center text-lg text-white/60 md:text-xl"
+            className="mt-6 max-w-md px-4 text-center text-base leading-relaxed text-white/60 md:mt-8 md:max-w-2xl md:px-0 md:text-xl"
           >
             Every pixel tells a story. Every interaction is choreographed.
-            <br className="hidden md:block" />
+            <span className="hidden md:inline"><br /></span>
+            <span className="md:hidden"> </span>
             Welcome to the ACM portfolio.
           </motion.p>
 
-          {/* Stats row */}
+          {/* Stats row - Mobile: smaller gap, stacked feel */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.8 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="mt-16 flex gap-12 md:gap-20"
+            className="mt-10 flex gap-6 md:mt-16 md:gap-20"
           >
             {[
               { value: "05", label: "Projects" },
               { value: "∞", label: "Iterations" },
               { value: "24/7", label: "Dedication" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-4xl font-bold text-white md:text-5xl">
+            ].map((stat, index) => (
+              <motion.div 
+                key={stat.label} 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ delay: 1.1 + index * 0.1 }}
+              >
+                <div className="text-2xl font-bold text-white md:text-5xl">
                   {stat.value}
                 </div>
-                <div className="mt-1 font-mono text-xs uppercase tracking-[0.3em] text-white/40">
+                <div className="mt-1 font-mono text-[8px] uppercase tracking-[0.2em] text-white/40 md:text-xs md:tracking-[0.3em]">
                   {stat.label}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
 
-          {/* Scroll indicator */}
+          {/* Scroll indicator - Mobile: more compact */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: false, amount: 0.8 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 md:bottom-12"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               className="flex flex-col items-center gap-2"
             >
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
+              <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-white/30 md:text-[10px] md:tracking-[0.3em]">
                 Scroll to explore
               </span>
-              <div className="h-12 w-px bg-acm-blue/30" />
+              <div className="h-8 w-px bg-acm-blue/30 md:h-12" />
             </motion.div>
           </motion.div>
         </motion.div>
@@ -137,12 +145,12 @@ export default function HeroSection() {
 }
 
 function FloatingParticles() {
-  // Reduced particle count for performance
-  const particles = Array.from({ length: 20 }, (_, i) => ({
+  // Fewer particles on mobile for performance
+  const particles = Array.from({ length: 15 }, (_, i) => ({
     id: i,
     x: (i * 37) % 100,
     y: (i * 53) % 100,
-    size: 2 + (i % 3),
+    size: 1.5 + (i % 3),
     duration: 15 + (i % 10) * 2,
     delay: i * 0.3,
   }));
@@ -160,8 +168,8 @@ function FloatingParticles() {
             height: p.size,
           }}
           animate={{
-            y: [0, -100, 0],
-            opacity: [0, 0.6, 0],
+            y: [0, -80, 0],
+            opacity: [0, 0.5, 0],
           }}
           transition={{
             duration: p.duration,
