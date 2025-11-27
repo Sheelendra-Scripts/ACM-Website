@@ -48,8 +48,7 @@ export default function HeroSection() {
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-6 flex items-center gap-3 md:mb-8 md:gap-4"
           >
@@ -64,8 +63,7 @@ export default function HeroSection() {
           <div className="overflow-hidden">
             <motion.h1
               initial={{ y: 100, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true, amount: 0.35, margin: "-10% 0px" }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, ease: [0.25, 1, 0.5, 1], delay: 0.4 }}
               className="text-center font-display text-5xl font-bold leading-[0.9] tracking-tight md:text-8xl lg:text-9xl"
             >
@@ -77,13 +75,14 @@ export default function HeroSection() {
           {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mt-6 max-w-md px-4 text-center text-base leading-relaxed text-white/60 md:mt-8 md:max-w-2xl md:px-0 md:text-xl"
           >
             Every pixel tells a story. Every interaction is choreographed.
-            <span className="hidden md:inline"><br /></span>
+            <span className="hidden md:inline">
+              <br />
+            </span>
             <span className="md:hidden"> </span>
             Welcome to the ACM portfolio.
           </motion.p>
@@ -91,8 +90,7 @@ export default function HeroSection() {
           {/* Stats row - Mobile: smaller gap, stacked feel */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
             className="mt-10 flex gap-6 md:mt-16 md:gap-20"
           >
@@ -101,12 +99,11 @@ export default function HeroSection() {
               { value: "∞", label: "Iterations" },
               { value: "24/7", label: "Dedication" },
             ].map((stat, index) => (
-              <motion.div 
-                key={stat.label} 
+              <motion.div
+                key={stat.label}
                 className="text-center"
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.1 + index * 0.1 }}
               >
                 <div className="text-2xl font-bold text-white md:text-5xl">
@@ -122,8 +119,7 @@ export default function HeroSection() {
           {/* Scroll indicator - Mobile: more compact */}
           <motion.div
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: false, amount: 0.8 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.2 }}
             className="absolute bottom-8 left-1/2 -translate-x-1/2 md:bottom-12"
           >

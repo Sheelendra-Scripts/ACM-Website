@@ -105,7 +105,7 @@ function FeaturedProjectCard({
       ref={cardRef}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: "-50px", amount: 0.55 }}
+      viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.8 }}
       className={`grid gap-6 md:gap-8 lg:grid-cols-2 lg:gap-16 ${
         isEven ? "" : "lg:grid-flow-dense"
@@ -200,38 +200,38 @@ function FeaturedProjectCard({
           {project.description}
         </motion.p>
 
-        {/* Metrics - scrollable on mobile */}
+        {/* Metrics - compact grid on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-5 flex gap-3 overflow-x-auto pb-1 scrollbar-hide md:mt-8 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:pb-0"
+          className="mt-5 grid grid-cols-3 gap-2 md:mt-8 md:gap-4"
         >
           {project.metrics.slice(0, 3).map((metric) => (
             <div
               key={metric}
-              className="shrink-0 border-l-2 border-acm-blue/30 pl-3 md:pl-4"
+              className="border-l-2 border-acm-blue/30 pl-2 md:pl-4"
             >
-              <span className="block whitespace-nowrap font-mono text-[10px] uppercase tracking-wider text-white/40 md:whitespace-normal md:text-xs">
+              <span className="block font-mono text-[8px] uppercase leading-tight tracking-wider text-white/40 md:text-xs">
                 {metric}
               </span>
             </div>
           ))}
         </motion.div>
 
-        {/* Tags - horizontal scroll on mobile */}
+        {/* Tags - wrapped on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-5 flex gap-2 overflow-x-auto pb-1 scrollbar-hide md:mt-8 md:flex-wrap md:overflow-visible md:pb-0"
+          className="mt-4 flex flex-wrap gap-1.5 md:mt-8 md:gap-2"
         >
           {project.tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="shrink-0 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-white/40 md:px-3 md:py-1 md:text-xs"
+              className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-white/40 md:px-3 md:py-1 md:text-xs"
             >
               {tag}
             </span>
