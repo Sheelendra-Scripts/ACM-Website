@@ -11,7 +11,7 @@ function ClosingBackgroundEffect() {
   }, []);
 
   // Deterministic values for grid dots - reduced count for performance
-  const gridDots = Array.from({ length: 30 }, (_, i) => {
+  const gridDots = Array.from({ length: 20 }, (_, i) => {
     const seed = i * 12345;
     const pseudoRandom1 = ((seed * 9301 + 49297) % 233280) / 233280;
     const pseudoRandom2 = ((seed * 7621 + 81237) % 233280) / 233280;
@@ -28,7 +28,7 @@ function ClosingBackgroundEffect() {
 
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Subtle glow */}
+      {/* Subtle glow - smaller on mobile */}
       <motion.div
         animate={{
           scale: [1, 1.1, 1],
@@ -39,7 +39,7 @@ function ClosingBackgroundEffect() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-acm-blue/10 blur-[150px] will-change-transform"
+        className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-acm-blue/10 blur-[100px] will-change-transform md:h-[600px] md:w-[600px] md:blur-[150px]"
       />
 
       {/* Grid dots */}
@@ -54,7 +54,7 @@ function ClosingBackgroundEffect() {
             repeat: Infinity,
             delay: dot.delay,
           }}
-          className="absolute h-1 w-1 rounded-full bg-white"
+          className="absolute h-0.5 w-0.5 rounded-full bg-white md:h-1 md:w-1"
           style={{ left: dot.left, top: dot.top }}
         />
       ))}
@@ -76,22 +76,23 @@ export default function ClosingStatement() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen overflow-hidden bg-black py-32"
+      className="relative min-h-screen overflow-hidden bg-black py-16 md:py-32"
     >
       <ClosingBackgroundEffect />
 
       {/* Content */}
       <motion.div
         style={{ scale, opacity, y }}
-        className="relative z-10 flex min-h-[70vh] flex-col items-center justify-center px-6 text-center will-change-transform"
+        className="relative z-10 flex min-h-[60vh] flex-col items-center justify-center px-4 text-center will-change-transform md:min-h-[70vh] md:px-6"
       >
         {/* Decorative line */}
         <motion.div
           initial={{ width: 0 }}
-          whileInView={{ width: "100px" }}
+          whileInView={{ width: "60px" }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8 h-px bg-acm-blue/50"
+          className="mb-6 h-px bg-acm-blue/50 md:mb-8"
+          style={{ width: "100px" }}
         />
 
         {/* Label */}
@@ -100,7 +101,7 @@ export default function ClosingStatement() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-6 font-mono text-xs uppercase tracking-[0.5em] text-acm-blue"
+          className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-acm-blue md:mb-6 md:text-xs md:tracking-[0.5em]"
         >
           Join The Movement
         </motion.span>
@@ -111,7 +112,7 @@ export default function ClosingStatement() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="max-w-4xl font-display text-4xl font-bold leading-tight md:text-6xl lg:text-7xl"
+          className="max-w-sm font-display text-2xl font-bold leading-tight md:max-w-4xl md:text-6xl lg:text-7xl"
         >
           <span className="text-white">Ready to Build</span>
           <br />
@@ -124,29 +125,28 @@ export default function ClosingStatement() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-8 max-w-2xl text-lg leading-relaxed text-white/50 md:text-xl"
+          className="mt-5 max-w-xs text-sm leading-relaxed text-white/50 md:mt-8 md:max-w-2xl md:text-xl"
         >
           Whether you&apos;re a seasoned developer or just getting started,
-          there&apos;s a place for you in our community. Let&apos;s create the
-          next breakthrough together.
+          there&apos;s a place for you in our community.
         </motion.p>
 
-        {/* CTA buttons */}
+        {/* CTA buttons - Stack on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6"
+          className="mt-8 flex w-full max-w-xs flex-col gap-3 md:mt-12 md:w-auto md:max-w-none md:flex-row md:gap-6"
         >
           {/* Primary CTA */}
           <motion.a
             href="/join"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="group relative overflow-hidden rounded-full bg-acm-blue px-10 py-4 font-medium text-white shadow-lg shadow-acm-blue/20 transition-all hover:bg-acm-blue-light hover:shadow-xl hover:shadow-acm-blue/30"
+            className="group relative overflow-hidden rounded-full bg-acm-blue px-8 py-3.5 text-center font-medium text-white shadow-lg shadow-acm-blue/20 transition-all hover:bg-acm-blue-light hover:shadow-xl hover:shadow-acm-blue/30 md:px-10 md:py-4"
           >
-            <span className="relative z-10 flex items-center justify-center gap-3">
+            <span className="relative z-10 flex items-center justify-center gap-2 text-sm md:gap-3 md:text-base">
               <span>Join ACM</span>
               <span className="transition-transform group-hover:translate-x-1">
                 →
@@ -159,9 +159,9 @@ export default function ClosingStatement() {
             href="/events"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="group relative overflow-hidden rounded-full border border-white/20 bg-white/5 px-10 py-4 font-medium text-white backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/10"
+            className="group relative overflow-hidden rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-center font-medium text-white backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/10 md:px-10 md:py-4"
           >
-            <span className="flex items-center justify-center gap-3">
+            <span className="flex items-center justify-center gap-2 text-sm md:gap-3 md:text-base">
               <span>View Events</span>
               <span className="text-white/50 transition-colors group-hover:text-white">
                 ↗
@@ -170,13 +170,13 @@ export default function ClosingStatement() {
           </motion.a>
         </motion.div>
 
-        {/* Stats */}
+        {/* Stats - Compact on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-20 flex items-center gap-8 md:gap-16"
+          className="mt-12 flex items-center gap-6 md:mt-20 md:gap-16"
         >
           {[
             { value: "500+", label: "Members" },
@@ -189,11 +189,11 @@ export default function ClosingStatement() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false, amount: 0.6 }}
                 transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
-                className="block font-display text-3xl font-bold text-white md:text-4xl"
+                className="block font-display text-xl font-bold text-white md:text-4xl"
               >
                 {stat.value}
               </motion.span>
-              <span className="mt-1 block font-mono text-xs uppercase tracking-wider text-white/40">
+              <span className="mt-0.5 block font-mono text-[8px] uppercase tracking-wider text-white/40 md:mt-1 md:text-xs">
                 {stat.label}
               </span>
             </div>
@@ -202,7 +202,7 @@ export default function ClosingStatement() {
       </motion.div>
 
       {/* Bottom fade */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-black" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-black md:h-32" />
     </section>
   );
 }

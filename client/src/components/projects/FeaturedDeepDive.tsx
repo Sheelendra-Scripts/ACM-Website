@@ -23,11 +23,11 @@ export default function FeaturedDeepDive({ projects }: FeaturedDeepDiveProps) {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen overflow-hidden bg-neutral-950 py-32"
+      className="relative min-h-screen overflow-hidden bg-neutral-950 py-16 md:py-32"
     >
-      {/* Subtle background glow */}
-      <div className="absolute left-1/4 top-1/4 h-[600px] w-[600px] rounded-full bg-acm-blue/5 blur-[150px]" />
-      <div className="absolute bottom-1/4 right-1/4 h-[500px] w-[500px] rounded-full bg-acm-blue/3 blur-[150px]" />
+      {/* Subtle background glow - smaller on mobile */}
+      <div className="absolute left-1/4 top-1/4 h-[300px] w-[300px] rounded-full bg-acm-blue/5 blur-[100px] md:h-[600px] md:w-[600px] md:blur-[150px]" />
+      <div className="absolute bottom-1/4 right-1/4 h-[250px] w-[250px] rounded-full bg-acm-blue/3 blur-[100px] md:h-[500px] md:w-[500px] md:blur-[150px]" />
 
       {/* Grid pattern overlay */}
       <div
@@ -35,38 +35,39 @@ export default function FeaturedDeepDive({ projects }: FeaturedDeepDiveProps) {
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundSize: "40px 40px",
         }}
       />
 
-      <div className="relative z-10 px-6 md:px-12">
+      <div className="relative z-10 px-4 md:px-12">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 0.8 }}
-          className="mb-24 max-w-4xl"
+          className="mb-12 max-w-4xl text-center md:mb-24 md:text-left"
         >
-          <div className="mb-6 flex items-center gap-4">
-            <div className="h-px w-16 bg-acm-blue/50" />
-            <span className="font-mono text-xs uppercase tracking-[0.4em] text-acm-blue">
+          <div className="mb-4 flex items-center justify-center gap-3 md:mb-6 md:justify-start md:gap-4">
+            <div className="h-px w-10 bg-acm-blue/50 md:w-16" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-acm-blue md:text-xs md:tracking-[0.4em]">
               Deep Dive
             </span>
+            <div className="h-px w-10 bg-acm-blue/50 md:hidden" />
           </div>
-          <h2 className="font-display text-4xl font-bold md:text-6xl lg:text-7xl">
+          <h2 className="font-display text-3xl font-bold md:text-6xl lg:text-7xl">
             <span className="text-white">Featured</span>
             <br />
             <span className="text-white/30">Projects</span>
           </h2>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/40">
+          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/40 md:mx-0 md:mt-6 md:max-w-xl md:text-lg">
             An in-depth look at our most impactful work — the challenges we
             faced, the solutions we crafted, and the results we achieved.
           </p>
         </motion.div>
 
         {/* Featured projects grid */}
-        <div className="space-y-32">
+        <div className="space-y-16 md:space-y-32">
           {displayProjects.map((project, index) => (
             <FeaturedProjectCard
               key={project.id}
@@ -104,9 +105,9 @@ function FeaturedProjectCard({
       ref={cardRef}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: "-50px", amount: 0.55 }}
+      viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.8 }}
-      className={`grid gap-8 lg:grid-cols-2 lg:gap-16 ${
+      className={`grid gap-6 md:gap-8 lg:grid-cols-2 lg:gap-16 ${
         isEven ? "" : "lg:grid-flow-dense"
       }`}
     >
@@ -117,12 +118,12 @@ function FeaturedProjectCard({
           isEven ? "" : "lg:col-start-2"
         }`}
       >
-        <div className="group relative overflow-hidden rounded-3xl">
-          {/* Glow effect - simplified */}
-          <div className="absolute -inset-4 rounded-3xl bg-acm-blue/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl">
+          {/* Glow effect - smaller on mobile */}
+          <div className="absolute -inset-2 rounded-2xl bg-acm-blue/10 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100 md:-inset-4 md:rounded-3xl md:blur-2xl" />
 
           {/* Image */}
-          <div className="relative aspect-16/10 overflow-hidden rounded-3xl border border-white/10">
+          <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 md:aspect-16/10 md:rounded-3xl">
             <Image
               src={project.image}
               alt={project.title}
@@ -133,9 +134,9 @@ function FeaturedProjectCard({
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/40" />
 
-            {/* Floating number */}
-            <div className="absolute bottom-6 left-6">
-              <span className="font-mono text-8xl font-bold text-white/5">
+            {/* Floating number - smaller on mobile */}
+            <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+              <span className="font-mono text-5xl font-bold text-white/5 md:text-8xl">
                 {String(index + 1).padStart(2, "0")}
               </span>
             </div>
@@ -155,13 +156,13 @@ function FeaturedProjectCard({
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-4 flex items-center gap-4"
+          className="mb-3 flex items-center gap-3 md:mb-4 md:gap-4"
         >
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-white/40">
+          <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-white/40 md:px-3 md:py-1 md:text-[10px]">
             {project.year}
           </span>
           <span className="h-px flex-1 bg-white/10" />
-          <span className="font-mono text-[10px] uppercase tracking-wider text-white/30">
+          <span className="font-mono text-[9px] uppercase tracking-wider text-white/30 md:text-[10px]">
             {project.role}
           </span>
         </motion.div>
@@ -172,7 +173,7 @@ function FeaturedProjectCard({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="font-display text-3xl font-bold text-white md:text-5xl"
+          className="font-display text-2xl font-bold text-white md:text-5xl"
         >
           {project.title}
         </motion.h3>
@@ -183,7 +184,7 @@ function FeaturedProjectCard({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-2 text-lg text-acm-blue"
+          className="mt-1.5 text-sm text-acm-blue md:mt-2 md:text-lg"
         >
           {project.subtitle}
         </motion.p>
@@ -194,40 +195,43 @@ function FeaturedProjectCard({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-6 max-w-lg text-base leading-relaxed text-white/50"
+          className="mt-4 max-w-lg text-sm leading-relaxed text-white/50 line-clamp-3 md:mt-6 md:line-clamp-none md:text-base"
         >
           {project.description}
         </motion.p>
 
-        {/* Metrics */}
+        {/* Metrics - compact grid on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-8 grid grid-cols-3 gap-4"
+          className="mt-5 grid grid-cols-3 gap-2 md:mt-8 md:gap-4"
         >
           {project.metrics.slice(0, 3).map((metric) => (
-            <div key={metric} className="border-l-2 border-acm-blue/30 pl-4">
-              <span className="block font-mono text-xs uppercase tracking-wider text-white/40">
+            <div
+              key={metric}
+              className="border-l-2 border-acm-blue/30 pl-2 md:pl-4"
+            >
+              <span className="block font-mono text-[8px] uppercase leading-tight tracking-wider text-white/40 md:text-xs">
                 {metric}
               </span>
             </div>
           ))}
         </motion.div>
 
-        {/* Tags */}
+        {/* Tags - wrapped on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.55 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-8 flex flex-wrap gap-2"
+          className="mt-4 flex flex-wrap gap-1.5 md:mt-8 md:gap-2"
         >
-          {project.tags.map((tag) => (
+          {project.tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs uppercase tracking-wider text-white/40"
+              className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-white/40 md:px-3 md:py-1 md:text-xs"
             >
               {tag}
             </span>
@@ -241,16 +245,16 @@ function FeaturedProjectCard({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.55 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-10"
+            className="mt-6 md:mt-10"
           >
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 font-mono text-sm uppercase tracking-wider text-white transition-colors hover:text-acm-blue"
+              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:text-acm-blue md:gap-3 md:text-sm"
             >
               <span>View Project</span>
-              <span className="relative h-px w-10 bg-white/30 transition-all group-hover:w-16 group-hover:bg-acm-blue">
+              <span className="relative h-px w-8 bg-white/30 transition-all group-hover:w-12 group-hover:bg-acm-blue md:w-10 md:group-hover:w-16">
                 <span className="absolute -top-[5px] right-0 text-white/50 transition-colors group-hover:text-acm-blue">
                   →
                 </span>
