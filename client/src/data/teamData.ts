@@ -1,9 +1,14 @@
 export interface TeamMember {
   name: string;
   role: string;
-  category: 'office-bearer' | 'creative-head' | 'team-lead' | 'creative-lead';
+  category: 'faculty-coordinator' | 'office-bearer' | 'creative-head' | 'team-lead' | 'creative-lead';
   imageUrl?: string;
 }
+
+export const facultyCoordinators: TeamMember[] = [
+  { name: 'Prof. Arvinder Kaur', role: 'Faculty Coordinator', category: 'faculty-coordinator' },
+  { name: 'Dr. Rahul Johari', role: 'Faculty Sponsor', category: 'faculty-coordinator' },
+];
 
 export const officeBearer: TeamMember[] = [
   { name: 'Shivam', role: 'Chair', category: 'office-bearer' },
@@ -12,7 +17,6 @@ export const officeBearer: TeamMember[] = [
   { name: 'Abhijith KS', role: 'Web Master', category: 'office-bearer' },
   { name: 'Prabhakar', role: 'Treasurer', category: 'office-bearer' },
   { name: 'Aniket Kumar', role: 'Membership Chair', category: 'office-bearer' },
-  { name: 'Dr. Rahul Johari', role: 'Faculty Sponsor', category: 'office-bearer' },
 ];
 
 export const acmCreatives: TeamMember[] = [

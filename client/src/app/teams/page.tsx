@@ -2,6 +2,7 @@ import TeamsHero from "@/components/teams/TeamsHero";
 import TeamSection from "@/components/teams/TeamSection";
 import CinematicScroll from "@/components/teams/CinematicScroll";
 import {
+  facultyCoordinators,
   officeBearer,
   acmCreatives,
   teamLeads,
@@ -19,6 +20,14 @@ export default function TeamsPage() {
 
       {/* Content Sections */}
       <div className="relative">
+        {/* Faculty Coordinators */}
+        <TeamSection
+          title="Faculty Coordinators"
+          subtitle="PROLOGUE: The Mentors"
+          members={facultyCoordinators}
+          sectionNumber="00"
+        />
+
         {/* Office Bearers */}
         <TeamSection
           title="The Leadership"
