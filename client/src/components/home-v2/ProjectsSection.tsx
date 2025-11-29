@@ -20,7 +20,7 @@ const projects: Project[] = [
     tags: "#hackathon #innovation #collaboration #tech",
     color: "bg-[#1a1a2e]",
     alignRight: false,
-    speed: -0.15,
+    speed: -0.7,
   },
   {
     title: "TECH WORKSHOP SERIES",
@@ -38,7 +38,7 @@ const projects: Project[] = [
     tags: "#design #ui/ux #figma #creative",
     color: "bg-[#1a1a2e]",
     alignRight: false,
-    speed: -0.15,
+    speed: -0.75,
   },
   {
     title: "OPEN SOURCE INITIATIVE",
@@ -55,10 +55,7 @@ const projects: Project[] = [
  * HOOK: useParallax
  * A simple custom hook to calculate parallax offset based on scroll position.
  */
-const useParallax = (
-  ref: React.RefObject<HTMLDivElement | null>,
-  speed: number = 0.5
-) => {
+export const useParallax = (ref: React.RefObject<HTMLDivElement | null>, speed = 0.5) => {
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
@@ -67,17 +64,17 @@ const useParallax = (
       const rect = ref.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Calculate how far the element is from the center of the screen
+      // Calculate distance from center of viewport
       const distanceFromCenter = rect.top + rect.height / 2 - windowHeight / 2;
 
-      // Apply speed factor
-      setOffset(distanceFromCenter * speed * 0.8);
+      // Multiply by speed to get the pixel offset
+      setOffset(distanceFromCenter * speed);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial calc
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial calculation
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [ref, speed]);
 
   return offset;
@@ -103,9 +100,8 @@ function ProjectItem({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full max-w-7xl mx-auto py-24 px-6 md:px-12 flex flex-col ${
-        alignRight ? "md:flex-row-reverse" : "md:flex-row"
-      } items-center gap-12 md:gap-24`}
+      className={`relative w-full h-[100vh] max-w-7xl mx-auto py-24 px-6 md:px-12 flex flex-col ${alignRight ? "md:flex-row-reverse" : "md:flex-row"
+        } items-center gap-12 md:gap-24`}
       style={{ transform: `translate3d(0px, ${yOffset}px, 0px)` }}
     >
       {/* --- Visual Wrapper (Video Placeholder) --- */}
@@ -131,26 +127,23 @@ function ProjectItem({
       <div className="w-full md:w-2/5 flex flex-col relative">
         {/* The 'Timeline' visual elements */}
         <div
-          className={`hidden md:block absolute top-0 bottom-0 ${
-            alignRight ? "-right-12" : "-left-12"
-          } w-px bg-gray-700`}
+          className={`hidden md:block absolute top-0 bottom-0 ${alignRight ? "-right-12" : "-left-12"
+            } w-px bg-gray-700`}
         >
           <div className="absolute top-1/4 -left-[5px] w-[11px] h-[11px] border-2 border-gray-600 rounded-full bg-[#0d0d0d] z-10" />
         </div>
 
         <div
-          className={`space-y-6 ${
-            alignRight ? "md:text-right" : "md:text-left"
-          }`}
+          className={`space-y-6 ${alignRight ? "md:text-right" : "md:text-left"
+            }`}
         >
           <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white">
             {title}
           </h3>
 
           <div
-            className={`h-px w-12 bg-gray-600 my-4 inline-block ${
-              alignRight ? "ml-auto" : ""
-            }`}
+            className={`h-px w-12 bg-gray-600 my-4 inline-block ${alignRight ? "ml-auto" : ""
+              }`}
           />
 
           <div className="text-lg text-gray-400 leading-relaxed font-light">
@@ -162,9 +155,8 @@ function ProjectItem({
           </p>
 
           <button
-            className={`mt-4 text-sm font-bold border-b-2 border-white text-white pb-1 w-max hover:text-acm-blue hover:border-acm-blue transition-colors ${
-              alignRight ? "ml-auto" : "mr-auto"
-            }`}
+            className={`mt-4 text-sm font-bold border-b-2 border-white text-white pb-1 w-max hover:text-acm-blue hover:border-acm-blue transition-colors ${alignRight ? "ml-auto" : "mr-auto"
+              }`}
           >
             VIEW CASE STUDY
           </button>
@@ -178,7 +170,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative w-full bg-[#0d0d0d] overflow-hidden"
+      className="relative w-full bg-[#0d0d0d]/90 overflow-hidden  backdrop-blur-sm"
     >
       {/* Fixed Grid Background - Stays in place while content scrolls */}
       <div

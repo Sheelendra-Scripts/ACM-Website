@@ -4,6 +4,7 @@ import {
   AboutSection,
   MarqueeSection,
   ProjectsSection,
+  MarqueeColumnSection,
   ProcessSection,
   GallerySection,
   ContactSection,
@@ -18,6 +19,7 @@ export default function Home() {
       <AboutSection />
       <MarqueeSection />
       <ProjectsSection />
+      <MarqueeColumnSection />
       <GallerySection />
       <ProcessSection />
       <ContactSection />

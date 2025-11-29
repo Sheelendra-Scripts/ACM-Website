@@ -31,7 +31,7 @@ export default function MarqueeSection() {
           {Array.from({ length: repeatCount }).map((_, i) => (
             <span
               key={`row1-${i}`}
-              className="font-display text-[15vw] font-bold leading-none tracking-tighter md:text-[12vw]"
+              className="font-display text-[7.5vw] font-bold leading-none tracking-tighter md:text-[6vw]"
               style={{
                 WebkitTextStroke: "1.5px rgba(255, 255, 255, 0.3)",
                 color: "transparent",

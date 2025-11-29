@@ -8,3 +8,4 @@ export { default as GallerySection } from "./GallerySection";
 export { default as ContactSection } from "./ContactSection";
 export { default as FooterSection } from "./FooterSection";
 export { default as SmoothScroll } from "./SmoothScroll";
+export { default as MarqueeColumnSection } from "./MarqueeColumnSection";
