@@ -9,3 +9,4 @@ export { default as ContactSection } from "./ContactSection";
 export { default as FooterSection } from "./FooterSection";
 export { default as SmoothScroll } from "./SmoothScroll";
 export { default as MarqueeColumnSection } from "./MarqueeColumnSection";
+export { default as ParallaxImageSection } from "./ParallaxImageSection";

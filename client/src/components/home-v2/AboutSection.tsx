@@ -41,7 +41,7 @@ export default function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative w-full overflow-hidden bg-black px-6 py-32 md:px-12 md:py-48 lg:px-20"
+      className="relative w-full overflow-hidden bg-black px-6 py-18 md:px-12 md:py-28 lg:px-20"
     >
       {/* Subtle gradient background */}
       <div className="pointer-events-none absolute inset-0">

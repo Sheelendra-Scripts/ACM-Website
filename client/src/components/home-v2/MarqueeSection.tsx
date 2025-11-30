@@ -14,7 +14,7 @@ export default function MarqueeSection() {
   const x1 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
   const x2 = useTransform(scrollYProgress, [0, 1], ["-50%", "0%"]);
 
-  const marqueeText = "SELECTED PROJECTS - ";
+  const marqueeText = "CURATED EVENTS - ";
   const repeatCount = 4;
 
   return (
