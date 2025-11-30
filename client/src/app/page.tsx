@@ -10,12 +10,12 @@ import {
   ContactSection,
   FooterSection,
 } from "@/components/home-v2";
+import Hero from "@/components/home/Hero";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black">
-      <HeaderV2 />
-      <HeroV2 />
+      <Hero/>
       <AboutSection />
       <MarqueeSection />
       <ProjectsSection />
