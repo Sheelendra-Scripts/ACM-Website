@@ -51,20 +51,23 @@ export default function MarqueeColumnSection() {
     ];
 
     return (
-        <section className="relative w-full h-[100vh] overflow-hidden bg-[#0d0d0d]  py-12 z-0">
-            <div className="grid grid-cols-3 gap-6 max-w-7xl mx-auto px-6 h-[120%] -mt-24">
-                {/* Column 1: Moves Up (-speed) */}
-                <MarqueeColumn images={col1Images} speed={0.15} className="mt-12" />
+      <section className="relative w-full h-[100vh] overflow-hidden bg-[#0d0d0d]  py-12 z-0">
+        <div className="grid grid-cols-4 gap-1 mx-auto px-1 h-[120%] -mt-24">
+          {/* Column 1: Moves Up (-speed) */}
+          <MarqueeColumn images={col1Images} speed={0.15} className="mt-12" />
 
-                {/* Column 2: Moves Down (+speed) - Starts higher up so it has room to go down */}
-                <MarqueeColumn images={col2Images} speed={-0.15} className="-mt-48" />
+          {/* Column 2: Moves Down (+speed) - Starts higher up so it has room to go down */}
+          <MarqueeColumn images={col2Images} speed={-0.15} className="-mt-48" />
 
-                {/* Column 3: Moves Up (-speed) */}
-                <MarqueeColumn images={col3Images} speed={0.15} className="mt-24" />
-            </div>
+          {/* Column 3: Moves Up (-speed) */}
+          <MarqueeColumn images={col3Images} speed={0.15} className="mt-24" />
+    
+          {/* Column 3: Moves Up (-speed) */}
+          <MarqueeColumn images={col1Images} speed={-0.15} className="mt-24" />
+        </div>
 
-            {/* Optional Gradient Overlay to fade edges */}
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#0d0d0d] via-transparent to-[#0d0d0d]" />
-        </section>
+        {/* Optional Gradient Overlay to fade edges */}
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#0d0d0d] via-transparent to-[#0d0d0d]" />
+      </section>
     );
 };

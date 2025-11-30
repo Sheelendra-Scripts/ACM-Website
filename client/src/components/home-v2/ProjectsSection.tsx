@@ -172,6 +172,7 @@ export default function ProjectsSection() {
       id="projects"
       className="relative w-full bg-[#0d0d0d]/90 overflow-hidden  backdrop-blur-sm"
     >
+      <div className="absolute inset-0 pointer-events-none bg-linear-to-b from-transparent via-transparent to-[#0d0d0d] z-5"/>
       {/* Fixed Grid Background - Stays in place while content scrolls */}
       <div
         className="pointer-events-none absolute inset-0"
