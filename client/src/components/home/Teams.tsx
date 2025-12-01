@@ -216,7 +216,7 @@ export default function Teams() {
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {facultyMembers.map((member, index) => (
-                <MemberCard key={member.name} member={member} index={index} />
+                <MemberCard key={`faculty-${member.role}-${index}`} member={member} index={index} />
               ))}
             </div>
           </div>
@@ -230,7 +230,7 @@ export default function Teams() {
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {officeBearers.map((member, index) => (
-                <MemberCard key={member.name} member={member} index={index} />
+                <MemberCard key={`office-${member.role}-${index}`} member={member} index={index} />
               ))}
             </div>
           </div>
@@ -244,7 +244,7 @@ export default function Teams() {
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {technicalTeam.map((member, index) => (
-                <MemberCard key={member.name} member={member} index={index} />
+                <MemberCard key={`tech-${member.role}-${index}`} member={member} index={index} />
               ))}
             </div>
           </div>
@@ -258,7 +258,7 @@ export default function Teams() {
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {creativeTeam.map((member, index) => (
-                <MemberCard key={member.name} member={member} index={index} />
+                <MemberCard key={`creative-${member.role}-${index}`} member={member} index={index} />
               ))}
             </div>
           </div>

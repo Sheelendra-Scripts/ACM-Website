@@ -23,7 +23,7 @@ const socialLinks = [
   },
   { 
     name: "Email", 
-    href: "mailto:acm@ggsipuedc.ac.in", 
+    href: "mailto:usaracm@ipu.ac.in", 
     icon: Mail 
   },
 ];
@@ -171,10 +171,10 @@ export default function CTASection() {
           >
             Questions? Reach out at{" "}
             <a 
-              href="mailto:acm@ggsipuedc.ac.in" 
+              href="mailto:usaracm@ipu.ac.in" 
               className="text-white/50 hover:text-acm-blue transition-colors duration-300"
             >
-              acm@ggsipuedc.ac.in
+              usaracm@ipu.ac.in
             </a>
           </motion.p>
         </div>

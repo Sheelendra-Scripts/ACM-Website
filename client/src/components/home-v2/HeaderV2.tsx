@@ -150,8 +150,8 @@ export default function HeaderV2() {
             className="mt-8 text-center"
           >
             <p className="text-sm text-gray-500">Get in touch</p>
-            <a href="mailto:acm@ggsipu.ac.in" className="text-sm text-acm-blue">
-              acm@ggsipu.ac.in
+            <a href="mailto:usaracm@ipu.ac.in" className="text-sm text-acm-blue">
+              usaracm@ipu.ac.in
             </a>
           </motion.div>
         </nav>

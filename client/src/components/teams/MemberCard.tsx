@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { TeamMember } from "@/data/teamData";
+import { Linkedin } from "lucide-react";
+import Image from "next/image";
 
 interface MemberCardProps {
   member: TeamMember;
@@ -9,119 +11,168 @@ interface MemberCardProps {
 }
 
 export default function MemberCard({ member, index }: MemberCardProps) {
-  const isTBF = member.name === "TBF" || member.name === "To be filled";
+  const isTBA = member.name === "TBF" || member.name === "To be filled" || member.name === "To Be Announced" || member.name === "TBD";
+  const hasImage = member.imageUrl && !isTBA;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: "-100px" }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{
-        duration: 0.8,
+        duration: 0.6,
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
       className="group relative"
     >
       {/* Main Card */}
-      <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-gray-900/50 to-gray-900/30 border border-white/5 backdrop-blur-sm transition-all duration-500 hover:border-acm-blue/50 hover:shadow-2xl hover:shadow-acm-blue/20">
-        {/* Photo Placeholder */}
-        <div className="relative aspect-3/4 overflow-hidden bg-linear-to-br from-gray-800/50 to-gray-900/80">
-          {/* Geometric Pattern Overlay */}
-          <div className="absolute inset-0 opacity-30">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern
-                  id={`grid-${index}`}
-                  width="40"
-                  height="40"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path
-                    d="M 40 0 L 0 0 0 40"
-                    fill="none"
-                    stroke="rgba(255,255,255,0.05)"
-                    strokeWidth="1"
+      <div className="relative bg-[#0a0a0a] border border-white/5 overflow-hidden transition-all duration-500 hover:border-acm-blue/30">
+        {/* Corner Accents */}
+        <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-white/10 group-hover:border-acm-blue/40 transition-colors duration-300 z-10" />
+        <div className="absolute top-0 right-0 w-4 h-4 border-r border-t border-white/10 group-hover:border-acm-blue/40 transition-colors duration-300 z-10" />
+        <div className="absolute bottom-0 left-0 w-4 h-4 border-l border-b border-white/10 group-hover:border-acm-blue/40 transition-colors duration-300 z-10" />
+        <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-white/10 group-hover:border-acm-blue/40 transition-colors duration-300 z-10" />
+
+        {/* Photo Area */}
+        <div className="relative aspect-4/5 overflow-hidden bg-[#080808]">
+          {hasImage ? (
+            <>
+              <Image
+                src={member.imageUrl!}
+                alt={member.name}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-transparent to-transparent opacity-80" />
+            </>
+          ) : (
+            <>
+              {/* Placeholder Pattern */}
+              <div className="absolute inset-0 opacity-20">
+                <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <pattern
+                      id={`dots-${index}`}
+                      width="20"
+                      height="20"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)" />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill={`url(#dots-${index})`} />
+                </svg>
+              </div>
+
+              {/* Abstract Avatar */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative">
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: index * 0.1 + 0.2, duration: 0.5 }}
+                    className="w-24 h-24 rounded-full bg-linear-to-br from-acm-blue/20 to-acm-blue/5 blur-2xl"
                   />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill={`url(#grid-${index})`} />
-            </svg>
-          </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div 
+                      className="text-4xl font-black text-white/10"
+                      style={{ fontFamily: "var(--font-heading)" }}
+                    >
+                      {isTBA ? "?" : member.name.charAt(0)}
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          {/* Stylized Silhouette */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-              className="w-32 h-32 rounded-full bg-linear-to-br from-acm-blue/20 to-acm-blue-light/10 blur-3xl"
-            />
-          </div>
+              {/* Gradient Overlay for placeholder */}
+              <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
+            </>
+          )}
 
-          {/* Hover Overlay - Glitch Effect */}
+          {/* Hover Glow */}
           <motion.div
-            className="absolute inset-0 bg-linear-to-t from-acm-blue/0 via-acm-blue/0 to-acm-blue/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            whileHover={{
-              background: [
-                "linear-gradient(to top, rgba(0, 133, 202, 0), rgba(0, 133, 202, 0.1), rgba(0, 133, 202, 0))",
-                "linear-gradient(to top, rgba(0, 163, 255, 0.1), rgba(0, 133, 202, 0), rgba(0, 163, 255, 0.1))",
-                "linear-gradient(to top, rgba(0, 133, 202, 0), rgba(0, 133, 202, 0.1), rgba(0, 133, 202, 0))",
-              ],
-              transition: { duration: 0.3, repeat: 2 },
-            }}
+            className="absolute inset-0 bg-acm-blue/0 group-hover:bg-acm-blue/5 transition-colors duration-500 pointer-events-none"
           />
 
-          {/* Film Strip Indicator */}
-          <div className="absolute top-4 right-4">
-            <div className="flex space-x-1">
-              <div className="w-1 h-1 rounded-full bg-white/30 group-hover:bg-acm-blue transition-colors" />
-              <div className="w-1 h-1 rounded-full bg-white/30 group-hover:bg-acm-blue transition-colors delay-75" />
-              <div className="w-1 h-1 rounded-full bg-white/30 group-hover:bg-acm-blue transition-colors delay-150" />
-            </div>
+          {/* Index Badge */}
+          <div className="absolute top-3 left-3 z-10">
+            <span 
+              className="text-[10px] tracking-[0.2em] text-white/20 font-medium"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              {String(index + 1).padStart(2, '0')}
+            </span>
           </div>
         </div>
 
         {/* Info Section */}
-        <div className="relative p-5 bg-linear-to-b from-transparent to-black/40">
+        <div className="relative p-5 bg-[#0a0a0a]">
           {/* Role Badge */}
-          <div className="mb-2">
-            <span className="inline-block px-2.5 py-0.5 text-xs uppercase tracking-normalst text-acm-blue/80 border border-acm-blue/30 rounded-full bg-acm-blue/5 group-hover:bg-acm-blue/10 group-hover:text-acm-blue transition-all">
+          <div className="mb-3">
+            <span 
+              className="inline-block px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-acm-blue/70 border border-acm-blue/20 bg-acm-blue/5 group-hover:bg-acm-blue/10 group-hover:border-acm-blue/30 transition-all duration-300"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
               {member.role}
             </span>
           </div>
 
           {/* Name */}
           <h3
-            className={`text-xl md:text-2xl font-display font-bold tracking-normal transition-all duration-300 ${
-              isTBF
-                ? "text-gray-500 italic"
-                : "text-white group-hover:text-acm-blue-light"
+            className={`text-lg md:text-xl font-black tracking-normal transition-all duration-300 mb-3 ${
+              isTBA
+                ? "text-white/20 italic"
+                : "text-white group-hover:text-acm-blue"
             }`}
+            style={{ fontFamily: "var(--font-heading)" }}
           >
-            {member.name}
+            {isTBA ? "To Be Announced" : member.name}
           </h3>
 
           {/* Accent Line */}
           <motion.div
-            className="mt-3 h-0.5 bg-linear-to-r from-acm-blue via-acm-blue-light to-transparent"
+            className="h-px bg-linear-to-r from-acm-blue/40 to-transparent mb-4"
             initial={{ width: 0 }}
             whileInView={{ width: "100%" }}
-            viewport={{ once: false }}
-            transition={{ delay: index * 0.1 + 0.5, duration: 0.6 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
           />
+
+          {/* Social Links */}
+          <div className="flex items-center gap-3">
+            {member.linkedin && !isTBA ? (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-white/5 border border-white/5 hover:border-acm-blue/30 hover:bg-acm-blue/10 transition-all duration-300"
+              >
+                <Linkedin className="w-4 h-4 text-white/40 hover:text-acm-blue transition-colors" />
+              </a>
+            ) : (
+              <div className="p-2 bg-white/3 border border-white/5 opacity-30 cursor-not-allowed">
+                <Linkedin className="w-4 h-4 text-white/20" />
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Scan Line Effect on Hover */}
+        {/* Hover Scan Line */}
         <motion.div
           className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100"
-          initial={false}
-          whileHover={{
-            background: [
-              "linear-gradient(0deg, transparent 0%, rgba(0, 133, 202, 0.1) 50%, transparent 100%) 0% 0% / 100% 200%",
-              "linear-gradient(0deg, transparent 0%, rgba(0, 133, 202, 0.1) 50%, transparent 100%) 0% 100% / 100% 200%",
-            ],
-            transition: { duration: 1.5, repeat: Infinity },
+          style={{
+            background: "linear-gradient(180deg, transparent 0%, rgba(0, 133, 202, 0.05) 50%, transparent 100%)",
+            backgroundSize: "100% 200%",
+          }}
+          animate={{
+            backgroundPosition: ["0% 0%", "0% 100%"],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "linear",
           }}
         />
       </div>

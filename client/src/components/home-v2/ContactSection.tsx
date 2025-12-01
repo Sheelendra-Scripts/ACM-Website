@@ -94,7 +94,7 @@ export default function ContactSection() {
 
         {/* Email Link */}
         <motion.a
-          href="mailto:acm@ggsipu.ac.in"
+          href="mailto:usaracm@ipu.ac.in"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.7 }}
@@ -105,7 +105,7 @@ export default function ContactSection() {
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
-            ACM@GGSIPU.AC.IN
+            USARACM@IPU.AC.IN
             <motion.span
               initial={{ scaleX: 0 }}
               whileHover={{ scaleX: 1 }}

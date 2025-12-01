@@ -76,13 +76,13 @@ export const technicalTeam: TeamMember[] = [
     linkedin: 'https://linkedin.com'
   },
   { 
-    name: 'Web Captain', 
-    role: 'To Be Announced', 
+    name: 'To Be Announced', 
+    role: 'Web Captain', 
     category: 'technical',
   },
   { 
-    name: 'Operations Lead', 
-    role: 'To Be Announced', 
+    name: 'To Be Announced', 
+    role: 'Operations Lead', 
     category: 'technical',
   },
 ];
@@ -101,18 +101,18 @@ export const creativeTeam: TeamMember[] = [
     linkedin: 'https://linkedin.com'
   },
   { 
-    name: 'UI/UX Captain', 
-    role: 'To Be Announced', 
+    name: 'To Be Announced', 
+    role: 'UI/UX Captain', 
     category: 'creative',
   },
   { 
-    name: 'Video & Photography', 
-    role: 'To Be Announced', 
+    name: 'To Be Announced', 
+    role: 'Video & Photography', 
     category: 'creative',
   },
   { 
-    name: 'Marketing & PR', 
-    role: 'To Be Announced', 
+    name: 'To Be Announced', 
+    role: 'Marketing & PR', 
     category: 'creative',
   },
 ];

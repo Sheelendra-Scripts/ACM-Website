@@ -9,8 +9,7 @@ const NAV_ITEMS = [
   { label: "Projects", number: "2.0", href: "/projects" },
   { label: "Events", number: "3.0", href: "#" },
   { label: "Team", number: "4.0", href: "/teams" },
-  { label: "Clubs", number: "5.0", href: "#" },
-  { label: "Blogs", number: "6.0", href: "/blogs" },
+  { label: "Blogs", number: "5.0", href: "/blogs" },
 ];
 
 export default function Navbar() {

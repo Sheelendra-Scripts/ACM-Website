@@ -33,7 +33,7 @@ const FOOTER_LINKS = [
   {
     title: "Contact",
     links: [
-      { label: "acm@ipu.ac.in", href: "mailto:acm@ipu.ac.in" },
+      { label: "usaracm@ipu.ac.in", href: "mailto:usaracm@ipu.ac.in" },
       { label: "GGSIPU East Delhi", href: "#" },
       { label: "New Delhi, India", href: "#" },
     ],
@@ -190,12 +190,12 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-6">
               <a
-                href="mailto:acm@ipu.ac.in"
+                href="mailto:usaracm@ipu.ac.in"
                 className="text-white/30 text-xs hover:text-white transition-colors flex items-center gap-2"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 <Mail size={12} />
-                acm@ipu.ac.in
+                usaracm@ipu.ac.in
               </a>
               <span className="text-white/20 text-xs">New Delhi, India</span>
             </div>
