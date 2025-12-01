@@ -81,19 +81,19 @@ export default function Hero() {
               {/* Main Title */}
               <h1 className="mb-8">
                 <span 
-                  className="block text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white leading-[0.9] tracking-tighter"
+                  className="block text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white leading-[0.9] tracking-normal"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   GGSIPU
                 </span>
                 <span 
-                  className="block text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white/20 leading-[0.9] tracking-tighter"
+                  className="block text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white/20 leading-[0.9] tracking-normal"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   EDC
                 </span>
                 <span 
-                  className="block text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-acm-blue leading-[0.9] tracking-tighter"
+                  className="block text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-acm-blue leading-[0.9] tracking-normal"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   ACM

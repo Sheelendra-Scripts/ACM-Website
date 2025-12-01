@@ -1,105 +1,184 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
-import TextFillOnScroll from "@/components/TextFillOnScroll";
+import { ArrowRight, Instagram, Linkedin, Github, Mail } from "lucide-react";
+
+const socialLinks = [
+  { 
+    name: "Instagram", 
+    href: "https://instagram.com/acm_ggsipu_edc", 
+    icon: Instagram 
+  },
+  { 
+    name: "LinkedIn", 
+    href: "https://linkedin.com/company/acm-ggsipu-edc", 
+    icon: Linkedin 
+  },
+  { 
+    name: "GitHub", 
+    href: "https://github.com/acm-ggsipu-edc", 
+    icon: Github 
+  },
+  { 
+    name: "Email", 
+    href: "mailto:acm@ggsipuedc.ac.in", 
+    icon: Mail 
+  },
+];
 
 export default function CTASection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const isHeaderInView = useInView(headerRef, { once: true, amount: 0.3 });
+
   return (
-    <section className="relative w-full overflow-hidden bg-black px-4 py-20 md:px-12 md:py-32">
-      {/* Background Effects */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-acm-blue/10 blur-[100px] md:h-96 md:w-96 md:blur-[150px]" />
+    <section
+      ref={sectionRef}
+      className="relative w-full bg-[#030303] overflow-hidden py-24 md:py-40"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-acm-blue/5 rounded-full blur-[200px]" />
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 mx-auto max-w-4xl text-center"
-      >
-        <TextFillOnScroll className="mb-6 font-display text-3xl font-bold md:mb-8 md:text-6xl lg:text-7xl">
-          Ready to begin?
-        </TextFillOnScroll>
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px',
+          }}
+        />
+      </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false }}
-          transition={{ delay: 0.3 }}
-          className="mx-auto mb-8 max-w-xl text-base text-gray-400 md:mb-12 md:max-w-2xl md:text-xl"
-        >
-          Join us to explore, create, and innovate. Your journey starts here.
-        </motion.p>
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+        <div ref={headerRef} className="text-center max-w-4xl mx-auto">
+          {/* Label */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="flex items-center justify-center gap-4 mb-8"
+          >
+            <div className="w-12 h-px bg-white/20" />
+            <span 
+              className="text-[10px] md:text-[11px] tracking-[0.5em] text-white/40 uppercase"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Join Us
+            </span>
+            <div className="w-12 h-px bg-white/20" />
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ delay: 0.5 }}
-          className="flex flex-col items-center justify-center gap-4 sm:flex-row md:gap-6"
-        >
-          <Link
-            href="https://discord.gg/acm-vit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative w-full overflow-hidden rounded-full bg-acm-blue px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:bg-acm-blue/90 hover:shadow-lg hover:shadow-acm-blue/25 sm:w-auto md:px-8 md:py-4 md:text-lg"
+          {/* Main Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl lg:text-8xl font-black text-white tracking-normal leading-[0.95] mb-8"
+            style={{ fontFamily: "var(--font-heading)" }}
           >
-            <span className="relative z-10">Join Discord</span>
-            <div className="absolute inset-0 bg-linear-to-r from-acm-blue to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          </Link>
+            READY TO <span className="text-acm-blue">BUILD</span>
+            <br />
+            SOMETHING <span className="text-white/20">GREAT?</span>
+          </motion.h2>
 
-          <Link
-            href="/contact"
-            className="w-full rounded-full border border-gray-700 bg-transparent px-6 py-3 text-base font-medium text-white transition-all duration-300 hover:border-acm-blue hover:bg-acm-blue/10 sm:w-auto md:px-8 md:py-4 md:text-lg"
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-white/40 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed"
+            style={{ fontFamily: "var(--font-body)" }}
           >
-            Contact Us
-          </Link>
-        </motion.div>
+            Join our community of innovators, creators, and tech enthusiasts. 
+            Whether you want to learn, build, or connect—there&apos;s a place for you here.
+          </motion.p>
 
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false }}
-          transition={{ delay: 0.7 }}
-          className="mt-12 flex items-center justify-center gap-6 md:mt-16 md:gap-8"
-        >
-          <Link
-            href="https://instagram.com/acmvit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-gray-500 transition-colors hover:text-acm-blue md:text-base"
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
-            Instagram
-          </Link>
-          <Link
-            href="https://twitter.com/acmvit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-gray-500 transition-colors hover:text-acm-blue md:text-base"
+            <Link
+              href="/teams"
+              className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-acm-blue text-white font-medium text-sm uppercase tracking-normalr transition-all duration-300 hover:bg-acm-blue/90"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              <span>Meet Our Team</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+
+            <Link
+              href="/blogs"
+              className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/10 text-white/70 font-medium text-sm uppercase tracking-normalr transition-all duration-300 hover:border-white/30 hover:text-white"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              <span>Read Our Blog</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
+
+          {/* Divider */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="w-full max-w-xl mx-auto h-px bg-linear-to-r from-transparent via-white/10 to-transparent mb-12"
+          />
+
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex items-center justify-center gap-6"
           >
-            Twitter
-          </Link>
-          <Link
-            href="https://linkedin.com/company/acmvit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-gray-500 transition-colors hover:text-acm-blue md:text-base"
+            {socialLinks.map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-3 border border-white/5 bg-white/2 transition-all duration-300 hover:border-acm-blue/30 hover:bg-acm-blue/5"
+              >
+                <social.icon className="w-5 h-5 text-white/40 group-hover:text-acm-blue transition-colors duration-300" />
+              </a>
+            ))}
+          </motion.div>
+
+          {/* Contact Info */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-10 text-sm text-white/30"
+            style={{ fontFamily: "var(--font-body)" }}
           >
-            LinkedIn
-          </Link>
-          <Link
-            href="https://github.com/acmvit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-gray-500 transition-colors hover:text-acm-blue md:text-base"
-          >
-            GitHub
-          </Link>
-        </motion.div>
-      </motion.div>
+            Questions? Reach out at{" "}
+            <a 
+              href="mailto:acm@ggsipuedc.ac.in" 
+              className="text-white/50 hover:text-acm-blue transition-colors duration-300"
+            >
+              acm@ggsipuedc.ac.in
+            </a>
+          </motion.p>
+        </div>
+      </div>
     </section>
   );
 }

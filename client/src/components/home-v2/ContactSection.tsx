@@ -55,7 +55,7 @@ export default function ContactSection() {
         className="relative z-10 mx-auto max-w-[1400px] text-center"
       >
         {/* Main Headline - Character by character animation */}
-        <h2 className="mb-8 font-display text-[12vw] font-bold leading-[0.9] tracking-tighter md:text-[10vw] lg:text-[8vw]">
+        <h2 className="mb-8 font-display text-[12vw] font-bold leading-[0.9] tracking-normal md:text-[10vw] lg:text-[8vw]">
           {characters.map((char, index) => (
             <motion.span
               key={index}
@@ -101,7 +101,7 @@ export default function ContactSection() {
           className="group inline-flex flex-col items-center"
         >
           <motion.span
-            className="relative text-lg font-medium tracking-wide text-white transition-colors group-hover:text-acm-blue md:text-xl lg:text-2xl"
+            className="relative text-lg font-medium tracking-normal text-white transition-colors group-hover:text-acm-blue md:text-xl lg:text-2xl"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >

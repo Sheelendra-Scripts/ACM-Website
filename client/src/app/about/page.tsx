@@ -1,21 +1,19 @@
 import {
   AboutHero,
-  BridgingTheGap,
-  StoryIntro,
-  HowWeEngage,
-  WhyACM,
+  WhatIsACM,
+  AboutGGSIPU,
+  AboutChapter,
   FAQSection,
   CTASection,
 } from "@/components/about";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#030303] text-white">
       <AboutHero />
-      <BridgingTheGap />
-      <StoryIntro />
-      <HowWeEngage />
-      <WhyACM />
+      <WhatIsACM />
+      <AboutGGSIPU />
+      <AboutChapter />
       <FAQSection />
       <CTASection />
     </main>

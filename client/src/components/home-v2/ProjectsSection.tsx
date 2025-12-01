@@ -118,7 +118,7 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
             <span className="relative flex h-2 w-2">
               <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
             </span>
-            <span className="text-xs font-semibold text-white uppercase tracking-wider" style={{ fontFamily: "var(--font-body)" }}>
+            <span className="text-xs font-semibold text-white uppercase tracking-normalr" style={{ fontFamily: "var(--font-body)" }}>
               Upcoming
             </span>
           </div>
@@ -129,7 +129,7 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
           {/* Date */}
           <div className="flex items-center gap-3 mb-4">
             <Calendar className="w-4 h-4 text-acm-blue" />
-            <span className="text-acm-blue font-medium tracking-wide" style={{ fontFamily: "var(--font-body)" }}>
+            <span className="text-acm-blue font-medium tracking-normal" style={{ fontFamily: "var(--font-body)" }}>
               {event.dateRange}
             </span>
           </div>
@@ -139,7 +139,7 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
             {event.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/60 border border-white/15 rounded-full"
+                className="px-3 py-1 text-[10px] font-semibold uppercase tracking-normalst text-white/60 border border-white/15 rounded-full"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 {tag}
@@ -149,7 +149,7 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
           
           {/* Title */}
           <h3
-            className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight"
+            className="text-4xl md:text-5xl font-black text-white mb-4 tracking-normal"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             {event.title}
@@ -170,7 +170,7 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
                 <span className="block text-2xl font-black text-white" style={{ fontFamily: "var(--font-heading)" }}>
                   {stat.value}
                 </span>
-                <span className="text-[9px] uppercase tracking-wider text-white/40" style={{ fontFamily: "var(--font-body)" }}>
+                <span className="text-[9px] uppercase tracking-normalr text-white/40" style={{ fontFamily: "var(--font-body)" }}>
                   {stat.label}
                 </span>
               </div>
@@ -182,7 +182,7 @@ function UpcomingEventCard({ event }: { event: UpcomingEvent }) {
             href={event.registrationLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-acm-blue text-white font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:bg-acm-blue/90"
+            className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-acm-blue text-white font-semibold text-sm uppercase tracking-normalr transition-all duration-300 hover:bg-acm-blue/90"
             style={{ fontFamily: "var(--font-body)" }}
           >
             <span>Register Now</span>
@@ -211,7 +211,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
     >
       {/* Index */}
       <div className="flex items-center gap-3 mb-6">
-        <span className="text-acm-blue text-xs font-medium tracking-widest" style={{ fontFamily: "var(--font-body)" }}>
+        <span className="text-acm-blue text-xs font-medium tracking-normalst" style={{ fontFamily: "var(--font-body)" }}>
           {event.index}
         </span>
         <div className="w-6 h-px bg-white/20" />
@@ -221,7 +221,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
       </div>
       
       {/* Title */}
-      <h3 className="text-2xl md:text-3xl font-black text-white mb-4 tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+      <h3 className="text-2xl md:text-3xl font-black text-white mb-4 tracking-normal" style={{ fontFamily: "var(--font-heading)" }}>
         {event.title}
       </h3>
       
@@ -235,7 +235,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
         {event.tags.map((tag) => (
           <span
             key={tag}
-            className="px-2 py-1 text-[10px] uppercase tracking-widest text-white/40 border border-white/10 rounded"
+            className="px-2 py-1 text-[10px] uppercase tracking-normalst text-white/40 border border-white/10 rounded"
             style={{ fontFamily: "var(--font-body)" }}
           >
             {tag}
@@ -285,7 +285,7 @@ function SectionHeader({ title, subtitle, isUpcoming = false }: { title: string;
           {subtitle}
         </span>
       </div>
-      <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+      <h2 className="text-4xl md:text-6xl font-black text-white tracking-normal" style={{ fontFamily: "var(--font-heading)" }}>
         <TextReveal text={title} delay={0.1} />
       </h2>
     </motion.div>
@@ -326,7 +326,7 @@ export default function ProjectsSection() {
           <div className="text-center mt-16">
             <a
               href="/events"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-white/15 text-white/60 text-sm uppercase tracking-widest hover:border-white/30 hover:text-white transition-all"
+              className="inline-flex items-center gap-3 px-8 py-4 border border-white/15 text-white/60 text-sm uppercase tracking-normalst hover:border-white/30 hover:text-white transition-all"
               style={{ fontFamily: "var(--font-body)" }}
             >
               <span>View All Events</span>

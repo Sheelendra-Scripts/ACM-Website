@@ -80,7 +80,7 @@ function SimpleCard({ card, index }: { card: typeof cards[0]; index: number }) {
           
           {/* Title */}
           <h3
-            className="text-3xl md:text-4xl font-black text-white mt-4 mb-4 tracking-tight leading-[1.1]"
+            className="text-3xl md:text-4xl font-black text-white mt-4 mb-4 tracking-normal leading-[1.1]"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             {card.title}
@@ -146,13 +146,13 @@ export default function AboutSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h2
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9]"
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-normal leading-[0.9]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               <TextReveal text="Shaping" delay={0.1} />
             </h2>
             <h2
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9]"
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-normal leading-[0.9]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               <span className="text-white/20">
@@ -222,7 +222,7 @@ export default function AboutSection() {
             className="group flex items-center gap-3 px-8 py-4 border border-white/10 hover:border-acm-blue/50 bg-white/2 hover:bg-acm-blue/5 transition-all duration-300"
           >
             <span 
-              className="text-sm font-medium tracking-wide text-white/60 group-hover:text-white transition-colors"
+              className="text-sm font-medium tracking-normal text-white/60 group-hover:text-white transition-colors"
               style={{ fontFamily: "var(--font-body)" }}
             >
               Learn More About Us

@@ -94,7 +94,7 @@ export default function StoryTransition({
 
         {/* Main Text */}
         <h2
-          className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-tight leading-[1.1] mb-8"
+          className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white tracking-normal leading-[1.1] mb-8"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           {renderMainText()}

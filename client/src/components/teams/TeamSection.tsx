@@ -60,7 +60,7 @@ export default function TeamSection({
                 {subtitle}
               </p>
             )}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-normal mb-4">
               {title}
             </h2>
             <motion.div

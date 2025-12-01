@@ -70,7 +70,7 @@ export default function FooterSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="mb-4 text-xs font-medium uppercase tracking-wider text-gray-500">
+            <h4 className="mb-4 text-xs font-medium uppercase tracking-normalr text-gray-500">
               Navigation
             </h4>
             <nav className="flex flex-col gap-3">
@@ -104,7 +104,7 @@ export default function FooterSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="mb-4 text-xs font-medium uppercase tracking-wider text-gray-500">
+            <h4 className="mb-4 text-xs font-medium uppercase tracking-normalr text-gray-500">
               Connect
             </h4>
             <div className="flex flex-wrap gap-4">

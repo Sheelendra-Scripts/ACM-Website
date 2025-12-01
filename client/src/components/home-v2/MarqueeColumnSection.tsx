@@ -144,7 +144,7 @@ export default function MarqueeColumnSection() {
                             Gallery
                         </span>
                     </div>
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-normal" style={{ fontFamily: "var(--font-heading)" }}>
                         Captured Moments
                     </h2>
                 </div>

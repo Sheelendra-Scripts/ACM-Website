@@ -131,7 +131,7 @@ export default function BlogsClosing() {
               >
                 {stat.value}
               </motion.span>
-              <span className="mt-1 block font-mono text-[9px] uppercase tracking-wider text-white/40">
+              <span className="mt-1 block font-mono text-[9px] uppercase tracking-normalr text-white/40">
                 {stat.label}
               </span>
             </div>

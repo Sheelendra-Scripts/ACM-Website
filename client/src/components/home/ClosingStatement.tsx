@@ -18,7 +18,7 @@ export default function ClosingStatement() {
 
       <div className="relative z-20 max-w-6xl mx-auto text-center pointer-events-none">
         <div className="pointer-events-auto">
-          <TextFillOnScroll className="text-4xl md:text-6xl lg:text-8xl font-display font-bold leading-[0.9] tracking-tight mb-12">
+          <TextFillOnScroll className="text-4xl md:text-6xl lg:text-8xl font-display font-bold leading-[0.9] tracking-normal mb-12">
             Ready to shape the future? Join the community where innovation has
             no boundaries.
           </TextFillOnScroll>

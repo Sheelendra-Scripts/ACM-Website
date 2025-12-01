@@ -33,7 +33,7 @@ export default function MarqueeSection() {
           {Array.from({ length: repeatCount }).map((_, i) => (
             <span
               key={`row1-${i}`}
-              className="text-[8vw] md:text-[6vw] font-black leading-none tracking-tight"
+              className="text-[8vw] md:text-[6vw] font-black leading-none tracking-normal"
               style={{
                 fontFamily: "var(--font-heading)",
                 WebkitTextStroke: "1px rgba(255, 255, 255, 0.15)",
@@ -56,7 +56,7 @@ export default function MarqueeSection() {
           {Array.from({ length: repeatCount }).map((_, i) => (
             <span
               key={`row2-${i}`}
-              className="text-[14vw] md:text-[11vw] font-black leading-[0.85] tracking-tight text-acm-blue"
+              className="text-[14vw] md:text-[11vw] font-black leading-[0.85] tracking-normal text-acm-blue"
               style={{
                 fontFamily: "var(--font-heading)",
               }}

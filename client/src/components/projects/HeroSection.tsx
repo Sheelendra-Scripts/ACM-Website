@@ -65,7 +65,7 @@ export default function HeroSection() {
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, ease: [0.25, 1, 0.5, 1], delay: 0.4 }}
-              className="text-center font-display text-5xl font-bold leading-[0.9] tracking-tight md:text-8xl lg:text-9xl"
+              className="text-center font-display text-5xl font-bold leading-[0.9] tracking-normal md:text-8xl lg:text-9xl"
             >
               <span className="block text-white">Projects that</span>
               <span className="block text-acm-blue">breathe.</span>

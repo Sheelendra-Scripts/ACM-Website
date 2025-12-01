@@ -193,7 +193,7 @@ export default function ClosingStatement() {
               >
                 {stat.value}
               </motion.span>
-              <span className="mt-0.5 block font-mono text-[8px] uppercase tracking-wider text-white/40 md:mt-1 md:text-xs">
+              <span className="mt-0.5 block font-mono text-[8px] uppercase tracking-normalr text-white/40 md:mt-1 md:text-xs">
                 {stat.label}
               </span>
             </div>

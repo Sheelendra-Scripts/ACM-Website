@@ -140,7 +140,7 @@ function EventItem({ event, index }: { event: Event; index: number }) {
         {/* Info */}
         <div className="md:col-span-7 space-y-2">
           <div className="flex items-center gap-4">
-            <span className="text-xs font-mono tracking-wider text-acm-blue border border-acm-blue/30 px-2 py-1 rounded-full">
+            <span className="text-xs font-mono tracking-normalr text-acm-blue border border-acm-blue/30 px-2 py-1 rounded-full">
               {event.category}
             </span>
             <span className="text-sm text-gray-500 group-hover:text-gray-300 transition-colors">

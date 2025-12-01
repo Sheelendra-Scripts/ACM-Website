@@ -158,11 +158,11 @@ function FeaturedProjectCard({
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-3 flex items-center gap-3 md:mb-4 md:gap-4"
         >
-          <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-white/40 md:px-3 md:py-1 md:text-[10px]">
+          <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-normalr text-white/40 md:px-3 md:py-1 md:text-[10px]">
             {project.year}
           </span>
           <span className="h-px flex-1 bg-white/10" />
-          <span className="font-mono text-[9px] uppercase tracking-wider text-white/30 md:text-[10px]">
+          <span className="font-mono text-[9px] uppercase tracking-normalr text-white/30 md:text-[10px]">
             {project.role}
           </span>
         </motion.div>
@@ -213,7 +213,7 @@ function FeaturedProjectCard({
               key={metric}
               className="border-l-2 border-acm-blue/30 pl-2 md:pl-4"
             >
-              <span className="block font-mono text-[8px] uppercase leading-tight tracking-wider text-white/40 md:text-xs">
+              <span className="block font-mono text-[8px] uppercase leading-tight tracking-normalr text-white/40 md:text-xs">
                 {metric}
               </span>
             </div>
@@ -231,7 +231,7 @@ function FeaturedProjectCard({
           {project.tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-white/40 md:px-3 md:py-1 md:text-xs"
+              className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[8px] uppercase tracking-normalr text-white/40 md:px-3 md:py-1 md:text-xs"
             >
               {tag}
             </span>
@@ -251,7 +251,7 @@ function FeaturedProjectCard({
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:text-acm-blue md:gap-3 md:text-sm"
+              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-normalr text-white transition-colors hover:text-acm-blue md:gap-3 md:text-sm"
             >
               <span>View Project</span>
               <span className="relative h-px w-8 bg-white/30 transition-all group-hover:w-12 group-hover:bg-acm-blue md:w-10 md:group-hover:w-16">

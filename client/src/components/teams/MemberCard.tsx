@@ -86,14 +86,14 @@ export default function MemberCard({ member, index }: MemberCardProps) {
         <div className="relative p-5 bg-linear-to-b from-transparent to-black/40">
           {/* Role Badge */}
           <div className="mb-2">
-            <span className="inline-block px-2.5 py-0.5 text-xs uppercase tracking-widest text-acm-blue/80 border border-acm-blue/30 rounded-full bg-acm-blue/5 group-hover:bg-acm-blue/10 group-hover:text-acm-blue transition-all">
+            <span className="inline-block px-2.5 py-0.5 text-xs uppercase tracking-normalst text-acm-blue/80 border border-acm-blue/30 rounded-full bg-acm-blue/5 group-hover:bg-acm-blue/10 group-hover:text-acm-blue transition-all">
               {member.role}
             </span>
           </div>
 
           {/* Name */}
           <h3
-            className={`text-xl md:text-2xl font-display font-bold tracking-tight transition-all duration-300 ${
+            className={`text-xl md:text-2xl font-display font-bold tracking-normal transition-all duration-300 ${
               isTBF
                 ? "text-gray-500 italic"
                 : "text-white group-hover:text-acm-blue-light"

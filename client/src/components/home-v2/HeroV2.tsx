@@ -110,7 +110,7 @@ export default function HeroV2() {
               variants={titleVariants}
               initial="hidden"
               animate="visible"
-              className="mb-8 font-display text-[12vw] font-bold leading-[0.85] tracking-tighter text-white md:text-[10vw] lg:text-[8vw]"
+              className="mb-8 font-display text-[12vw] font-bold leading-[0.85] tracking-normal text-white md:text-[10vw] lg:text-[8vw]"
             >
               {title.split("").map((char, i) => (
                 <motion.span
@@ -145,21 +145,21 @@ export default function HeroV2() {
             className="mt-16 flex flex-wrap items-end justify-between gap-8 border-t border-gray-800 pt-8"
           >
             <div className="space-y-1">
-              <p className="font-mono text-[10px] uppercase tracking-wider text-gray-600">
+              <p className="font-mono text-[10px] uppercase tracking-normalr text-gray-600">
                 Location
               </p>
               <p className="text-sm text-gray-300">New Delhi, India</p>
             </div>
 
             <div className="space-y-1">
-              <p className="font-mono text-[10px] uppercase tracking-wider text-gray-600">
+              <p className="font-mono text-[10px] uppercase tracking-normalr text-gray-600">
                 Members
               </p>
               <p className="text-sm text-gray-300">50+ Active</p>
             </div>
 
             <div className="space-y-1">
-              <p className="font-mono text-[10px] uppercase tracking-wider text-gray-600">
+              <p className="font-mono text-[10px] uppercase tracking-normalr text-gray-600">
                 Established
               </p>
               <p className="text-sm text-gray-300">2020</p>
@@ -172,7 +172,7 @@ export default function HeroV2() {
               className="hidden md:block"
             >
               <div className="flex flex-col items-center gap-2">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-gray-600">
+                <span className="font-mono text-[10px] uppercase tracking-normalr text-gray-600">
                   Scroll
                 </span>
                 <div className="h-12 w-px bg-linear-to-b from-acm-blue to-transparent" />

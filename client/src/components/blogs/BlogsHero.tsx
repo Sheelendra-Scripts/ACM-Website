@@ -158,7 +158,7 @@ export default function BlogsHero() {
                 delay: 0.5,
                 ease: [0.25, 1, 0.5, 1],
               }}
-              className="text-center font-display text-7xl font-bold leading-[0.85] tracking-tight md:text-9xl lg:text-[12rem]"
+              className="text-center font-display text-7xl font-bold leading-[0.85] tracking-normal md:text-9xl lg:text-[12rem]"
             >
               <span className="block bg-linear-to-b from-white via-white to-white/40 bg-clip-text text-transparent">
                 The
@@ -175,7 +175,7 @@ export default function BlogsHero() {
                 delay: 0.7,
                 ease: [0.25, 1, 0.5, 1],
               }}
-              className="text-center font-display text-7xl font-bold leading-[0.85] tracking-tight md:text-9xl lg:text-[12rem]"
+              className="text-center font-display text-7xl font-bold leading-[0.85] tracking-normal md:text-9xl lg:text-[12rem]"
             >
               <span className="block bg-linear-to-b from-acm-blue via-acm-blue-light to-acm-blue/50 bg-clip-text text-transparent">
                 Chronicle

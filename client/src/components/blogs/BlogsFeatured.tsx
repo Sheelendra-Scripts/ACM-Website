@@ -150,7 +150,7 @@ function FeaturedCard({
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-4"
           >
-            <span className="inline-block rounded-full border border-acm-blue/30 bg-acm-blue/10 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-acm-blue backdrop-blur-sm">
+            <span className="inline-block rounded-full border border-acm-blue/30 bg-acm-blue/10 px-3 py-1 font-mono text-[10px] uppercase tracking-normalr text-acm-blue backdrop-blur-sm">
               {post.category}
             </span>
           </motion.div>
@@ -211,7 +211,7 @@ function FeaturedCard({
                 <span className="block text-sm font-medium text-white/70">
                   {post.author.name}
                 </span>
-                <span className="block font-mono text-[10px] uppercase tracking-wider text-white/30">
+                <span className="block font-mono text-[10px] uppercase tracking-normalr text-white/30">
                   {post.author.role}
                 </span>
               </div>
@@ -220,7 +220,7 @@ function FeaturedCard({
             <span className="h-4 w-px bg-white/10" />
 
             {/* Read time */}
-            <span className="font-mono text-[10px] uppercase tracking-wider text-white/30">
+            <span className="font-mono text-[10px] uppercase tracking-normalr text-white/30">
               {post.readTime}
             </span>
           </motion.div>
@@ -233,7 +233,7 @@ function FeaturedCard({
             transition={{ duration: 0.6, delay: 0.55 }}
             className="mt-6 flex items-center gap-2 text-white/40 transition-all duration-300 group-hover:gap-4 group-hover:text-acm-blue"
           >
-            <span className="font-mono text-xs uppercase tracking-wider">
+            <span className="font-mono text-xs uppercase tracking-normalr">
               Read Story
             </span>
             <span className="transition-transform duration-300 group-hover:translate-x-1">

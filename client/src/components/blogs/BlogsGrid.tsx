@@ -64,7 +64,7 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`relative rounded-full px-5 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-300 ${
+              className={`relative rounded-full px-5 py-2 font-mono text-xs uppercase tracking-normalr transition-all duration-300 ${
                 activeCategory === category
                   ? "bg-acm-blue text-white"
                   : "border border-white/10 bg-white/5 text-white/50 hover:border-acm-blue/50 hover:text-white"
@@ -129,14 +129,14 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
 
                     {/* Category badge */}
                     <div className="absolute left-4 top-4">
-                      <span className="rounded-full border border-white/10 bg-black/40 px-3 py-1 font-mono text-[9px] uppercase tracking-wider text-white/60 backdrop-blur-sm">
+                      <span className="rounded-full border border-white/10 bg-black/40 px-3 py-1 font-mono text-[9px] uppercase tracking-normalr text-white/60 backdrop-blur-sm">
                         {post.category}
                       </span>
                     </div>
 
                     {/* Read time badge */}
                     <div className="absolute right-4 top-4">
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-white/40">
+                      <span className="font-mono text-[9px] uppercase tracking-normalr text-white/40">
                         {post.readTime}
                       </span>
                     </div>
@@ -159,7 +159,7 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
                       {post.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full bg-white/5 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-white/30"
+                          className="rounded-full bg-white/5 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-normalr text-white/30"
                         >
                           {tag}
                         </span>
@@ -174,7 +174,7 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
                           {post.author.name}
                         </span>
                       </div>
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-white/30">
+                      <span className="font-mono text-[9px] uppercase tracking-normalr text-white/30">
                         {new Date(post.publishedAt).toLocaleDateString(
                           "en-US",
                           {
@@ -195,7 +195,7 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
                       transition={{ duration: 0.3 }}
                       className="absolute bottom-6 right-6 flex items-center gap-2 text-acm-blue"
                     >
-                      <span className="font-mono text-[10px] uppercase tracking-wider">
+                      <span className="font-mono text-[10px] uppercase tracking-normalr">
                         Read
                       </span>
                       <span>→</span>
@@ -226,7 +226,7 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
             animate={{ opacity: 1 }}
             className="py-20 text-center"
           >
-            <p className="font-mono text-sm uppercase tracking-wider text-white/30">
+            <p className="font-mono text-sm uppercase tracking-normalr text-white/30">
               No stories found in this category
             </p>
           </motion.div>

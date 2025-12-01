@@ -85,7 +85,7 @@ export default function BlogReader({ post, isOpen, onClose }: BlogReaderProps) {
                     className="group flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-4 py-2 backdrop-blur-sm transition-all hover:border-acm-blue/50 hover:bg-black/60"
                   >
                     <ArrowLeft className="h-4 w-4 text-white/60 transition-transform group-hover:-translate-x-1 group-hover:text-acm-blue" />
-                    <span className="font-mono text-xs uppercase tracking-wider text-white/60 group-hover:text-white">
+                    <span className="font-mono text-xs uppercase tracking-normalr text-white/60 group-hover:text-white">
                       Back
                     </span>
                   </motion.button>
@@ -121,7 +121,7 @@ export default function BlogReader({ post, isOpen, onClose }: BlogReaderProps) {
                     transition={{ delay: 0.3 }}
                     className="mb-6"
                   >
-                    <span className="inline-block rounded-full border border-acm-blue/30 bg-acm-blue/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-wider text-acm-blue">
+                    <span className="inline-block rounded-full border border-acm-blue/30 bg-acm-blue/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-normalr text-acm-blue">
                       {post.category}
                     </span>
                   </motion.div>
@@ -160,7 +160,7 @@ export default function BlogReader({ post, isOpen, onClose }: BlogReaderProps) {
                         <span className="block text-sm font-medium text-white">
                           {post.author.name}
                         </span>
-                        <span className="block font-mono text-[10px] uppercase tracking-wider text-white/40">
+                        <span className="block font-mono text-[10px] uppercase tracking-normalr text-white/40">
                           {post.author.role}
                         </span>
                       </div>
@@ -171,7 +171,7 @@ export default function BlogReader({ post, isOpen, onClose }: BlogReaderProps) {
                     {/* Date */}
                     <div className="flex items-center gap-2 text-white/40">
                       <Calendar className="h-4 w-4" />
-                      <span className="font-mono text-xs uppercase tracking-wider">
+                      <span className="font-mono text-xs uppercase tracking-normalr">
                         {new Date(post.publishedAt).toLocaleDateString(
                           "en-US",
                           {
@@ -188,7 +188,7 @@ export default function BlogReader({ post, isOpen, onClose }: BlogReaderProps) {
                     {/* Read time */}
                     <div className="flex items-center gap-2 text-white/40">
                       <Clock className="h-4 w-4" />
-                      <span className="font-mono text-xs uppercase tracking-wider">
+                      <span className="font-mono text-xs uppercase tracking-normalr">
                         {post.readTime}
                       </span>
                     </div>
@@ -208,7 +208,7 @@ export default function BlogReader({ post, isOpen, onClose }: BlogReaderProps) {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-white/40"
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-normalr text-white/40"
                     >
                       {tag}
                     </span>
@@ -298,7 +298,7 @@ export default function BlogReader({ post, isOpen, onClose }: BlogReaderProps) {
                 {/* End divider */}
                 <div className="mt-16 mb-12 flex items-center justify-center gap-4">
                   <div className="h-px w-16 bg-linear-to-r from-transparent to-white/20" />
-                  <div className="font-mono text-xs uppercase tracking-widest text-white/20">
+                  <div className="font-mono text-xs uppercase tracking-normalst text-white/20">
                     End
                   </div>
                   <div className="h-px w-16 bg-linear-to-l from-transparent to-white/20" />
@@ -312,7 +312,7 @@ export default function BlogReader({ post, isOpen, onClose }: BlogReaderProps) {
                       <h4 className="mb-1 font-display text-lg font-bold text-white">
                         Written by {post.author.name}
                       </h4>
-                      <p className="mb-2 font-mono text-xs uppercase tracking-wider text-acm-blue">
+                      <p className="mb-2 font-mono text-xs uppercase tracking-normalr text-acm-blue">
                         {post.author.role}
                       </p>
                       <p className="text-sm text-white/50">

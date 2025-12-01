@@ -46,7 +46,7 @@ export default function TeamsHero() {
 
         {/* Main Title */}
         <div className="mb-8 md:mb-12">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white tracking-tight">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white tracking-normal">
             <SplitText>The Cast</SplitText>
           </h1>
         </div>
@@ -83,7 +83,7 @@ export default function TeamsHero() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="text-xs uppercase tracking-widest text-gray-500">
+            <span className="text-xs uppercase tracking-normalst text-gray-500">
               Scroll to explore
             </span>
             <svg

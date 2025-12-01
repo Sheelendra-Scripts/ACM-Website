@@ -87,7 +87,7 @@ export default function Footer() {
             </div>
             
             <h2 
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.95] mb-8"
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-normal leading-[0.95] mb-8"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               Let's Build<br />
@@ -124,7 +124,7 @@ export default function Footer() {
                   className="h-12 w-auto"
                 />
                 <div>
-                  <span className="block text-lg font-black tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+                  <span className="block text-lg font-black tracking-normal" style={{ fontFamily: "var(--font-heading)" }}>
                     GGSIPU EDC ACM
                   </span>
                   <span className="text-[10px] tracking-[0.2em] text-white/40 uppercase">Student Chapter</span>
@@ -185,7 +185,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10"
           >
-            <p className="text-white/30 text-xs tracking-wide" style={{ fontFamily: "var(--font-body)" }}>
+            <p className="text-white/30 text-xs tracking-normal" style={{ fontFamily: "var(--font-body)" }}>
               © 2024 GGSIPU EDC ACM Student Chapter. All rights reserved.
             </p>
             <div className="flex items-center gap-6">

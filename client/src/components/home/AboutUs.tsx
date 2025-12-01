@@ -57,13 +57,13 @@ export default function AboutUs() {
         <div className="lg:col-span-10 flex flex-col gap-10">
           <div className="space-y-8">
             <SplitText
-              className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[0.9] tracking-tight text-white"
+              className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[0.9] tracking-normal text-white"
               delay={0.2}
             >
               Innovating the Future
             </SplitText>
             <SplitText
-              className="text-4xl md:text-6xl lg:text-7xl font-title font-bold leading-[0.9] tracking-tight text-gray-500"
+              className="text-4xl md:text-6xl lg:text-7xl font-title font-bold leading-[0.9] tracking-normal text-gray-500"
               delay={0.4}
             >
               Together.

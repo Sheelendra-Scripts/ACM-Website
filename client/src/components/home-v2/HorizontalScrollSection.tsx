@@ -91,14 +91,14 @@ function HighlightCard({ item, index }: { item: typeof highlights[0]; index: num
           <AnimatedCounter
             value={item.number}
             suffix={item.suffix}
-            className="text-7xl md:text-9xl font-black text-white tracking-tight"
+            className="text-7xl md:text-9xl font-black text-white tracking-normal"
             duration={2}
           />
         </div>
 
         {/* Label */}
         <h3
-          className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight"
+          className="text-2xl md:text-3xl font-black text-white mb-2 tracking-normal"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           {item.label}
@@ -175,7 +175,7 @@ export default function HorizontalScrollSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight"
+                className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-normal"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 <TextReveal text="Numbers that" delay={0.2} />
@@ -219,14 +219,14 @@ export default function HorizontalScrollSection() {
                   Join Us
                 </span>
                 <h3
-                  className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight"
+                  className="text-4xl md:text-5xl font-black text-white mb-6 tracking-normal"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   Ready to make an impact?
                 </h3>
                 <a
                   href="/teams"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-acm-blue text-white text-sm font-semibold uppercase tracking-wider hover:bg-acm-blue/90 transition-colors"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-acm-blue text-white text-sm font-semibold uppercase tracking-normalr hover:bg-acm-blue/90 transition-colors"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   Explore Our Team
@@ -247,7 +247,7 @@ export default function HorizontalScrollSection() {
             />
           </motion.div>
           <span
-            className="text-[10px] text-white/30 tracking-widest uppercase"
+            className="text-[10px] text-white/30 tracking-normalst uppercase"
             style={{ fontFamily: "var(--font-body)" }}
           >
             Scroll

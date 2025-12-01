@@ -38,7 +38,7 @@ export default function CinematicScroll() {
           transition={{ delay: 1 }}
         >
           <motion.span
-            className="text-xs font-mono text-gray-500 tracking-wider"
+            className="text-xs font-mono text-gray-500 tracking-normalr"
             style={{
               opacity: useScroll().scrollYProgress,
             }}
