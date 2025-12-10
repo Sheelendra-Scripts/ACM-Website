@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, Mail, Github, Linkedin } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin } from "lucide-react";
 
 export default function ProjectsClosing() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -225,8 +225,7 @@ export default function ProjectsClosing() {
           className="flex items-center justify-center gap-4"
         >
           {[
-            { icon: Github, href: "https://github.com", label: "GitHub" },
-            { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+            { icon: Linkedin, href: "https://linkedin.com/company/usaracm", label: "LinkedIn" },
             { icon: Mail, href: "mailto:usaracm@ipu.ac.in", label: "Email" },
           ].map((social, i) => (
             <a

@@ -1,12 +1,12 @@
-import Hero from "@/components/home/Hero";
 import { 
+  Hero,
   AboutSection, 
   MarqueeSection, 
-  ProjectsSection, 
+  EventsSection, 
   GallerySection,
-  StoryTransition 
-} from "@/components/home-v2";
-import Teams from "@/components/home/Teams";
+  StoryTransition,
+  Teams
+} from "@/components/home";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
       />
       <GallerySection />
       <MarqueeSection />
-      <ProjectsSection />
+      <EventsSection />
       <StoryTransition
         topLabel="Community"
         mainText="Built by students, for students"

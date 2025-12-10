@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowLeft,
   MapPin,
@@ -20,6 +21,8 @@ import {
   Tag,
   FileText,
   Calendar,
+  Camera,
+  X,
 } from "lucide-react";
 import { EventData } from "@/data/eventsData";
 
@@ -31,6 +34,20 @@ export default function EventPageContent({ event }: EventPageContentProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  // Get slideshow images (all from gallery or just the main image)
+  const slideshowImages = event.gallery || (event.image ? [event.image] : []);
+
+  // Auto-rotate slideshow
+  useEffect(() => {
+    if (slideshowImages.length <= 1) return;
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % slideshowImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [slideshowImages.length]);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -64,10 +81,10 @@ export default function EventPageContent({ event }: EventPageContentProps) {
       />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative h-[90vh] overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen overflow-hidden">
         <motion.div
           style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
-          className="relative h-full flex flex-col items-center justify-center px-6"
+          className="relative min-h-screen flex flex-col items-center justify-center px-6 py-24"
         >
           {/* Background Effects */}
           <div className="absolute inset-0 pointer-events-none">
@@ -124,123 +141,341 @@ export default function EventPageContent({ event }: EventPageContentProps) {
             </Link>
           </motion.div>
 
-          {/* Content */}
-          <div className="relative z-10 max-w-4xl mx-auto text-center">
-            {/* Category & Date */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-wrap items-center justify-center gap-4 mb-8"
-            >
-              <span
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase"
-                style={{
-                  background: `${event.categoryColor}20`,
-                  color: event.categoryColor,
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                <Zap className="w-3.5 h-3.5" />
-                {event.category}
-              </span>
-              <span
-                className="text-sm text-white/40 flex items-center gap-1.5"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                <Calendar className="w-3.5 h-3.5" />
-                {event.date}
-              </span>
-              {event.isUpcoming && (
-                <span className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full">
+          {/* Content with Event Poster */}
+          <div className="relative z-10 max-w-6xl mx-auto w-full">
+            {(event.image || slideshowImages.length > 0) ? (
+              /* Two-column layout when image exists */
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* Event Slideshow */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="relative max-w-md mx-auto lg:mx-0 w-full"
+                >
+                  <div className="flex gap-4">
+                    {/* Main Image */}
+                    <div className="relative flex-1 aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                      {slideshowImages.length > 0 ? (
+                        <>
+                          {slideshowImages.map((img, idx) => (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: activeSlide === idx ? 1 : 0 }}
+                              transition={{ duration: 0.5 }}
+                              className="absolute inset-0"
+                            >
+                              <Image
+                                src={img}
+                                alt={`${event.title} - Image ${idx + 1}`}
+                                fill
+                                className="object-contain bg-black/50"
+                                priority={idx === 0}
+                              />
+                            </motion.div>
+                          ))}
+                        </>
+                      ) : (
+                        <Image
+                          src={event.image!}
+                          alt={event.title}
+                          fill
+                          className="object-contain bg-black/50"
+                          priority
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    </div>
+
+                    {/* Numbered Thumbnails */}
+                    {slideshowImages.length > 1 && (
+                      <div className="flex flex-col gap-2 w-16 max-h-[450px] overflow-y-auto no-scrollbar">
+                        {slideshowImages.map((img, idx) => (
+                          <motion.button
+                            key={idx}
+                            onClick={() => setActiveSlide(idx)}
+                            className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${activeSlide === idx
+                              ? "border-acm-blue shadow-lg shadow-acm-blue/30"
+                              : "border-white/20 hover:border-white/40"
+                              }`}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <Image
+                              src={img}
+                              alt={`Thumbnail ${idx + 1}`}
+                              fill
+                              className="object-cover"
+                            />
+                            <div className={`absolute inset-0 flex items-center justify-center ${activeSlide === idx ? "bg-acm-blue/40" : "bg-black/50"
+                              }`}>
+                              <span
+                                className="text-white font-bold text-lg"
+                                style={{ fontFamily: "var(--font-heading)" }}
+                              >
+                                {idx + 1}
+                              </span>
+                            </div>
+                          </motion.button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  {/* Decorative elements */}
+                  <div className="absolute -top-4 -right-4 w-8 h-8 border-t border-r border-acm-blue/30" />
+                  <div className="absolute -bottom-4 -left-4 w-8 h-8 border-b border-l border-acm-blue/30" />
+                </motion.div>
+
+                {/* Event Info */}
+                <div className="text-center lg:text-left">
+                  {/* Category & Date */}
                   <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="w-1.5 h-1.5 bg-green-500 rounded-full"
-                  />
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-6"
+                  >
+                    <span
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase"
+                      style={{
+                        background: `${event.categoryColor}20`,
+                        color: event.categoryColor,
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
+                      <Zap className="w-3.5 h-3.5" />
+                      {event.category}
+                    </span>
+                    <span
+                      className="text-sm text-white/40 flex items-center gap-1.5"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      <Calendar className="w-3.5 h-3.5" />
+                      {event.date}
+                    </span>
+                    {event.isUpcoming && (
+                      <span className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full">
+                        <motion.div
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                          className="w-1.5 h-1.5 bg-green-500 rounded-full"
+                        />
+                        <span
+                          className="text-[10px] font-semibold tracking-wider text-green-400 uppercase"
+                          style={{ fontFamily: "var(--font-body)" }}
+                        >
+                          Upcoming
+                        </span>
+                      </span>
+                    )}
+                  </motion.div>
+
+                  {/* Title */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    className="mb-6"
+                  >
+                    <h1
+                      className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight"
+                      style={{ fontFamily: "var(--font-heading)" }}
+                    >
+                      {event.title}
+                    </h1>
+                    <p
+                      className="mt-4 text-lg md:text-xl text-white/40"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      {event.subtitle}
+                    </p>
+                  </motion.div>
+
+                  {/* Meta Row */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-white/40 mb-8"
+                  >
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      <span className="text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                        {event.venue}
+                      </span>
+                    </div>
+                    {event.participants && (
+                      <div className="flex items-center gap-2">
+                        <Users className="w-4 h-4" />
+                        <span className="text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                          {event.participants}
+                        </span>
+                      </div>
+                    )}
+                  </motion.div>
+
+                  {/* CTA for Upcoming */}
+                  {event.isUpcoming && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.8 }}
+                    >
+                      {event.registrationUrl && event.registrationUrl !== "#" ? (
+                        <Link href={event.registrationUrl}>
+                          <motion.button
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-acm-blue text-white font-semibold rounded-full hover:bg-acm-blue/90 transition-colors"
+                          >
+                            <span style={{ fontFamily: "var(--font-body)" }}>
+                              Register Now
+                            </span>
+                            <ArrowUpRight className="w-4 h-4" />
+                          </motion.button>
+                        </Link>
+                      ) : (
+                        <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 text-orange-400 font-semibold rounded-full">
+                          <Clock className="w-5 h-5" />
+                          <span style={{ fontFamily: "var(--font-body)" }}>
+                            Coming Soon
+                          </span>
+                        </div>
+                      )}
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            ) : (
+              /* Original centered layout when no image */
+              <div className="text-center">
+                {/* Category & Date */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-wrap items-center justify-center gap-4 mb-8"
+                >
                   <span
-                    className="text-[10px] font-semibold tracking-wider text-green-400 uppercase"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase"
+                    style={{
+                      background: `${event.categoryColor}20`,
+                      color: event.categoryColor,
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
+                    <Zap className="w-3.5 h-3.5" />
+                    {event.category}
+                  </span>
+                  <span
+                    className="text-sm text-white/40 flex items-center gap-1.5"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    Upcoming
+                    <Calendar className="w-3.5 h-3.5" />
+                    {event.date}
                   </span>
-                </span>
-              )}
-            </motion.div>
-
-            {/* Title */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-6"
-            >
-              <h1
-                className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                {event.title}
-              </h1>
-              <p
-                className="mt-4 text-xl md:text-2xl text-white/40"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                {event.subtitle}
-              </p>
-            </motion.div>
-
-            {/* Meta Row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-wrap items-center justify-center gap-6 text-white/40"
-            >
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
-                <span className="text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                  {event.venue}
-                </span>
-              </div>
-              {event.participants && (
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4" />
-                  <span className="text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                    {event.participants}
-                  </span>
-                </div>
-              )}
-              {event.registrationDeadline && (
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span className="text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                    Register by {event.registrationDeadline}
-                  </span>
-                </div>
-              )}
-            </motion.div>
-
-            {/* CTA for Upcoming */}
-            {event.isUpcoming && event.registrationUrl && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="mt-10"
-              >
-                <Link href={event.registrationUrl}>
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-acm-blue text-white font-semibold rounded-full hover:bg-acm-blue/90 transition-colors"
-                  >
-                    <span style={{ fontFamily: "var(--font-body)" }}>
-                      Register Now
+                  {event.isUpcoming && (
+                    <span className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full">
+                      <motion.div
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                        className="w-1.5 h-1.5 bg-green-500 rounded-full"
+                      />
+                      <span
+                        className="text-[10px] font-semibold tracking-wider text-green-400 uppercase"
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        Upcoming
+                      </span>
                     </span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </motion.button>
-                </Link>
-              </motion.div>
+                  )}
+                </motion.div>
+
+                {/* Title */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="mb-6"
+                >
+                  <h1
+                    className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight"
+                    style={{ fontFamily: "var(--font-heading)" }}
+                  >
+                    {event.title}
+                  </h1>
+                  <p
+                    className="mt-4 text-xl md:text-2xl text-white/40"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    {event.subtitle}
+                  </p>
+                </motion.div>
+
+                {/* Meta Row */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="flex flex-wrap items-center justify-center gap-6 text-white/40"
+                >
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4" />
+                    <span className="text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                      {event.venue}
+                    </span>
+                  </div>
+                  {event.participants && (
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4" />
+                      <span className="text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                        {event.participants}
+                      </span>
+                    </div>
+                  )}
+                  {event.registrationDeadline && (
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      <span className="text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                        Register by {event.registrationDeadline}
+                      </span>
+                    </div>
+                  )}
+                </motion.div>
+
+                {/* CTA for Upcoming */}
+                {event.isUpcoming && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="mt-10"
+                  >
+                    {event.registrationUrl && event.registrationUrl !== "#" ? (
+                      <Link href={event.registrationUrl}>
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="inline-flex items-center gap-3 px-8 py-4 bg-acm-blue text-white font-semibold rounded-full hover:bg-acm-blue/90 transition-colors"
+                        >
+                          <span style={{ fontFamily: "var(--font-body)" }}>
+                            Register Now
+                          </span>
+                          <ArrowUpRight className="w-4 h-4" />
+                        </motion.button>
+                      </Link>
+                    ) : (
+                      <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 text-orange-400 font-semibold rounded-full">
+                        <Clock className="w-5 h-5" />
+                        <span style={{ fontFamily: "var(--font-body)" }}>
+                          Coming Soon
+                        </span>
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+              </div>
             )}
           </div>
 
@@ -363,7 +598,7 @@ export default function EventPageContent({ event }: EventPageContentProps) {
                     className="relative p-6 bg-linear-to-br from-white/3 to-transparent border border-white/10 rounded-xl overflow-hidden"
                   >
                     <div className="flex items-center gap-4 mb-3">
-                      <Award 
+                      <Award
                         className="w-8 h-8"
                         style={{ color: event.categoryColor }}
                       />
@@ -431,13 +666,12 @@ export default function EventPageContent({ event }: EventPageContentProps) {
               </div>
             </ContentSection>
           )}
-
           {/* Links */}
           {event.links && (
             <ContentSection title="Resources" icon={Link2}>
               <div className="flex flex-wrap gap-4">
                 {event.links.map((link, i) => (
-                  <Link key={i} href={link.url}>
+                  <Link key={i} href={link.url} target="_blank" rel="noopener noreferrer">
                     <motion.div
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
@@ -457,6 +691,7 @@ export default function EventPageContent({ event }: EventPageContentProps) {
             </ContentSection>
           )}
 
+
           {/* Tags */}
           <ContentSection title="Tags" icon={Tag}>
             <div className="flex flex-wrap gap-3">
@@ -471,6 +706,38 @@ export default function EventPageContent({ event }: EventPageContentProps) {
               ))}
             </div>
           </ContentSection>
+
+          {/* Gallery */}
+          {event.gallery && event.gallery.length > 0 && (
+            <ContentSection title="Gallery" icon={Camera}>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {event.gallery.map((image, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group"
+                    onClick={() => setLightboxImage(image)}
+                  >
+                    <Image
+                      src={image}
+                      alt={`${event.title} gallery image ${i + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <Camera className="w-5 h-5 text-white" />
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </ContentSection>
+          )}
         </div>
       </section>
 
@@ -516,6 +783,37 @@ export default function EventPageContent({ event }: EventPageContentProps) {
       >
         <ChevronUp className="w-5 h-5 text-white" />
       </motion.button>
+
+      {/* Lightbox */}
+      {lightboxImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[300] bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+            onClick={() => setLightboxImage(null)}
+          >
+            <X className="w-6 h-6 text-white" />
+          </button>
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            className="relative max-w-5xl max-h-[90vh] w-full h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightboxImage}
+              alt="Gallery image"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 }

@@ -1,76 +1,71 @@
 "use client";
 
-import { motion } from "framer-motion";
-
-const categories = [
-  "HACKATHONS",
-  "WORKSHOPS",
-  "WEBINARS",
-  "BOOTCAMPS",
-  "SEMINARS",
-  "CHALLENGES",
-  "IDEATHONS",
-  "MENTORSHIP",
-];
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function EventsMarquee() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const x1 = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const x2 = useTransform(scrollYProgress, [0, 1], ["-20%", "10%"]);
+
+  const marqueeText = "HACKATHONS • WORKSHOPS • TECH TALKS • BOOTCAMPS";
+  const repeatCount = 6;
+
   return (
-    <section className="relative py-10 md:py-14 bg-[#030303] overflow-hidden border-y border-white/5">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-linear-to-r from-acm-blue/5 via-transparent to-acm-blue/5" />
+    <section
+      ref={sectionRef}
+      className="relative w-full overflow-hidden bg-black py-8 sm:py-12 md:py-16 z-20"
+    >
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-acm-blue/2 to-transparent pointer-events-none" />
 
-      {/* Marquee Container */}
-      <div className="relative flex overflow-hidden">
-        {/* First marquee */}
+      {/* First Marquee Row - Outlined text */}
+      <div className="relative mb-2 overflow-hidden">
         <motion.div
-          animate={{ x: [0, -2000] }}
-          transition={{
-            duration: 35,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="flex items-center gap-12 md:gap-20 shrink-0"
+          style={{ x: x1 }}
+          className="flex whitespace-nowrap items-center gap-8"
         >
-          {[...categories, ...categories].map((item, i) => (
-            <div key={i} className="flex items-center gap-8 group">
-              <span
-                className="text-3xl md:text-5xl lg:text-6xl font-black whitespace-nowrap text-white/10 group-hover:text-white/30 transition-colors duration-500"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                {item}
-              </span>
-              <span className="w-2 h-2 bg-acm-blue/40 rotate-45" />
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Duplicate for seamless loop */}
-        <motion.div
-          animate={{ x: [0, -2000] }}
-          transition={{
-            duration: 35,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="flex items-center gap-12 md:gap-20 shrink-0"
-        >
-          {[...categories, ...categories].map((item, i) => (
-            <div key={i} className="flex items-center gap-8 group">
-              <span
-                className="text-3xl md:text-5xl lg:text-6xl font-black whitespace-nowrap text-white/10 group-hover:text-white/30 transition-colors duration-500"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                {item}
-              </span>
-              <span className="w-2 h-2 bg-acm-blue/40 rotate-45" />
-            </div>
+          {Array.from({ length: repeatCount }).map((_, i) => (
+            <span
+              key={`row1-${i}`}
+              className="text-[8vw] sm:text-[6vw] md:text-[5vw] font-bold leading-none tracking-normal"
+              style={{
+                fontFamily: "var(--font-heading)",
+                WebkitTextStroke: "1px rgba(255, 255, 255, 0.15)",
+                color: "transparent",
+              }}
+            >
+              {marqueeText}
+            </span>
           ))}
         </motion.div>
       </div>
 
-      {/* Edge fades */}
-      <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-[#030303] to-transparent pointer-events-none z-10" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-[#030303] to-transparent pointer-events-none z-10" />
+      {/* Second Marquee Row - Solid ACM Blue */}
+      <div className="relative overflow-hidden">
+        <motion.div
+          style={{ x: x2 }}
+          className="flex whitespace-nowrap items-center gap-12"
+        >
+          {Array.from({ length: repeatCount }).map((_, i) => (
+            <span
+              key={`row2-${i}`}
+              className="text-[12vw] sm:text-[10vw] md:text-[8vw] font-bold leading-[0.85] tracking-normal text-acm-blue"
+              style={{
+                fontFamily: "var(--font-heading)",
+              }}
+            >
+              CURATED EVENTS
+              <span className="mx-4 sm:mx-8 text-acm-blue/30">—</span>
+            </span>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }

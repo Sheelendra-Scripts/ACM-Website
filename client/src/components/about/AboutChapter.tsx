@@ -209,7 +209,7 @@ export default function AboutChapter() {
               {/* ACM Logo with White Text */}
               <div className="relative w-full aspect-4/3 max-w-[250px] mx-auto">
                 <Image
-                  src="/ACM_Logo_white_text.png"
+                  src="/ACM_Logo_white_text.webp"
                   alt="ACM Student Chapter Logo"
                   fill
                   className="object-contain"

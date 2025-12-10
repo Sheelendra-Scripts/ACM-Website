@@ -43,7 +43,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center">
             <div className="relative h-7 w-9">
               <Image
-                src="/ACM_Logo_white_text.png"
+                src="/ACM_Logo_white_text.webp"
                 alt="ACM Logo"
                 fill
                 className="object-contain"
@@ -89,7 +89,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-1 py-1">
           <div className="relative h-8 w-12">
             <Image
-              src="/ACM_Logo_white_text.png"
+              src="/ACM_Logo_white_text.webp"
               alt="ACM logo"
               fill
               className="object-contain"

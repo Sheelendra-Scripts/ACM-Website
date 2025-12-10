@@ -11,113 +11,128 @@ export interface TeamMember {
 // ==========================================
 
 export const facultyMembers: TeamMember[] = [
-  { 
-    name: 'Prof. Arvinder Kaur', 
-    role: 'Faculty Coordinator', 
+  {
+    name: 'Prof. Arvinder Kaur',
+    role: 'Faculty Coordinator',
     category: 'faculty',
-    imageUrl: '/ARVINDER KAUR.png',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/ARVINDER KAUR.webp',
+    linkedin: 'https://www.linkedin.com/in/arvinder-kaur-37b09a62/'
   },
-  { 
-    name: 'Dr. Rahul Johari', 
-    role: 'Faculty Sponsor', 
+  {
+    name: 'Dr. Rahul Johari',
+    role: 'Faculty Sponsor',
     category: 'faculty',
-    imageUrl: '/DR RAHUL JOHARI.jpg',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/DR RAHUL JOHARI.webp',
+    linkedin: 'https://www.linkedin.com/in/rahuljohari7/'
   },
 ];
 
 export const officeBearers: TeamMember[] = [
-  { 
-    name: 'Shivam', 
-    role: 'Chair', 
+  {
+    name: 'Shivam',
+    role: 'Chair',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/shivam Sharma.webp',
+    linkedin: 'https://www.linkedin.com/in/shivam-sharma-n7/'
   },
-  { 
-    name: 'Sheelendra', 
-    role: 'Vice Chair', 
+  {
+    name: 'Sheelendra',
+    role: 'Vice Chair',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/sheelendra.webp',
+    linkedin: 'https://www.linkedin.com/in/sheelendra--'
   },
-  { 
-    name: 'Arsh Ahmad', 
-    role: 'Secretary', 
+  {
+    name: 'Arsh Ahmad',
+    role: 'Secretary',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/arsh.webp',
+    linkedin: 'https://www.linkedin.com/in/arsh-ahmad/'
   },
-  { 
-    name: 'Prabhakar', 
-    role: 'Treasurer', 
+  {
+    name: 'Prabhakar',
+    role: 'Treasurer',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/prabhakar.webp',
+    linkedin: 'https://www.linkedin.com/in/prabhakar-jangid-23505a285/'
   },
-  { 
-    name: 'Aniket Kumar', 
-    role: 'Membership Chair', 
+  {
+    name: 'Aniket Kumar',
+    role: 'Membership Chair',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/aniket.webp',
+    linkedin: 'https://www.linkedin.com/in/aniket-kumar-775933302/'
   },
-  { 
-    name: 'Abhijith KS', 
-    role: 'Web Master', 
+  {
+    name: 'Abhijith KS',
+    role: 'Web Master',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/no-image.webp',
+    linkedin: 'https://www.linkedin.com/in/abhijith-ks-8b8290207/'
   },
 ];
 
 export const technicalTeam: TeamMember[] = [
-  { 
-    name: 'Shantanu Ojha', 
-    role: 'ML Captain', 
+  {
+    name: 'Shantanu Ojha',
+    role: 'ML Captain',
     category: 'technical',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/no-image.webp',
+    linkedin: 'https://www.linkedin.com/in/santanu-ojha-a52354292/'
   },
-  { 
-    name: 'Ritwik Mittal', 
-    role: 'DSA Captain', 
+  {
+    name: 'Ritwik Mittal',
+    role: 'DSA Captain',
     category: 'technical',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/no-image.webp',
+    linkedin: 'https://www.linkedin.com/in/ritwikmittal/'
   },
-  { 
-    name: 'To Be Announced', 
-    role: 'Web Captain', 
+  {
+    name: 'To Be Announced',
+    role: 'Web Captain',
     category: 'technical',
+    imageUrl: '/team/no-image.webp',
   },
-  { 
-    name: 'To Be Announced', 
-    role: 'Operations Lead', 
+  {
+    name: 'To Be Announced',
+    role: 'Operations Lead',
     category: 'technical',
+    imageUrl: '/team/no-image.webp',
   },
 ];
 
 export const creativeTeam: TeamMember[] = [
-  { 
-    name: 'Utkarsh Yadav', 
-    role: 'Design Captain', 
+  {
+    name: 'Utkarsh Yadav',
+    role: 'Design Captain',
     category: 'creative',
+    imageUrl: '/team/no-image.webp',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Shanvi Gulia', 
-    role: 'Content Captain', 
+  {
+    name: 'Shanvi Gulia',
+    role: 'Content Captain',
     category: 'creative',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/no-image.webp',
+    linkedin: 'https://www.linkedin.com/in/shanvi-gulia-7912a9275'
   },
-  { 
-    name: 'To Be Announced', 
-    role: 'UI/UX Captain', 
+  {
+    name: 'To Be Announced',
+    role: 'UI/UX Captain',
     category: 'creative',
+    imageUrl: '/team/no-image.webp',
   },
-  { 
-    name: 'To Be Announced', 
-    role: 'Video & Photography', 
+  {
+    name: 'To Be Announced',
+    role: 'Video & Photography',
     category: 'creative',
+    imageUrl: '/team/no-image.webp',
   },
-  { 
-    name: 'To Be Announced', 
-    role: 'Marketing & PR', 
+  {
+    name: 'To Be Announced',
+    role: 'Marketing & PR',
     category: 'creative',
+    imageUrl: '/team/no-image.webp',
   },
 ];
 
@@ -126,58 +141,64 @@ export const creativeTeam: TeamMember[] = [
 // ==========================================
 
 export const facultyMembers2024: TeamMember[] = [
-  { 
-    name: 'Prof. Arvinder Kaur', 
-    role: 'Faculty Coordinator', 
+  {
+    name: 'Prof. Arvinder Kaur',
+    role: 'Faculty Coordinator',
     category: 'faculty',
-    imageUrl: '/ARVINDER KAUR.png',
+    imageUrl: '/team/ARVINDER KAUR.webp',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Dr. Rahul Johari', 
-    role: 'Faculty Sponsor', 
+  {
+    name: 'Dr. Rahul Johari',
+    role: 'Faculty Sponsor',
     category: 'faculty',
-    imageUrl: '/DR RAHUL JOHARI.jpg',
+    imageUrl: '/team/DR RAHUL JOHARI.webp',
     linkedin: 'https://linkedin.com'
   },
 ];
 
 export const officeBearers2024: TeamMember[] = [
-  { 
-    name: 'Aditya Kumar', 
-    role: 'Chair', 
+  {
+    name: 'Aditya Kumar',
+    role: 'Chair',
     category: 'office-bearer',
+    imageUrl: '/team/aditya kumar.webp',
+    linkedin: 'https://www.linkedin.com/in/aditya-kumar0612/'
+  },
+  {
+    name: 'Durga Sharma',
+    role: 'Vice Chair',
+    category: 'office-bearer',
+    imageUrl: '/team/durga.webp',
     linkedin: 'https://linkedin.com'
   },
-  { 
-    name: 'Durga Sharma', 
-    role: 'Vice Chair', 
+  {
+    name: 'Chirag Khanna',
+    role: 'Secretary',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/chirag.webp',
+    linkedin: 'https://www.linkedin.com/in/chiragkhanna16/'
   },
-  { 
-    name: 'Chirag Khanna', 
-    role: 'Secretary', 
+  {
+    name: 'Ushnik Nath',
+    role: 'Treasurer',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/ushnik nath.webp',
+    linkedin: 'https://www.linkedin.com/in/ushnik-nath/'
   },
-  { 
-    name: 'Ushnik Nath', 
-    role: 'Treasurer', 
+  {
+    name: 'Sheelendra',
+    role: 'Membership Chair',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/sheelendra.webp',
+    linkedin: 'https://www.linkedin.com/in/sheelendra--'
   },
-  { 
-    name: 'Sheelendra', 
-    role: 'Membership Chair', 
+  {
+    name: 'Shivam',
+    role: 'Web Master',
     category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
-  },
-  { 
-    name: 'Shivam', 
-    role: 'Web Master', 
-    category: 'office-bearer',
-    linkedin: 'https://linkedin.com'
+    imageUrl: '/team/shivam Sharma.webp',
+    linkedin: 'https://www.linkedin.com/in/shivam-sharma-n7/'
   },
 ];
 

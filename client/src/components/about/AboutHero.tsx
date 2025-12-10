@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function AboutHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,237 +13,200 @@ export default function AboutHero() {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, -100]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.05]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 80]);
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen w-full overflow-hidden bg-[#030303]"
+      className="relative min-h-[100vh] w-full overflow-hidden bg-black"
     >
-      {/* Ambient Gradient Orbs - Static */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-acm-blue/10 blur-[180px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-purple-500/5 blur-[150px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-acm-blue/8 blur-[200px] pointer-events-none" />
+      {/* Hero Container */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {/* Background Image with Parallax - Subtle blend */}
+        <motion.div 
+          style={{ y: imageY, scale }}
+          className="absolute inset-0 w-full h-[120%] -top-[10%]"
+        >
+          <Image
+            src="/about/GGSIPU-East-Campus.webp"
+            alt="GGSIPU East Delhi Campus"
+            fill
+            priority
+            className="object-cover object-center opacity-40"
+            sizes="100vw"
+          />
+        </motion.div>
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
-            `,
-            backgroundSize: '80px 80px',
-          }}
-        />
-      </div>
-
-      {/* Corner Decorative Elements */}
-      <div className="absolute top-8 left-8 md:top-12 md:left-12">
-        <div className="relative">
-          <div className="w-20 h-20 md:w-24 md:h-24 border-l-2 border-t-2 border-white/10" />
-          <div className="absolute top-0 left-0 w-2 h-2 bg-acm-blue" />
-        </div>
-      </div>
-      
-      <div className="absolute top-8 right-8 md:top-12 md:right-12">
-        <div className="relative">
-          <div className="w-20 h-20 md:w-24 md:h-24 border-r-2 border-t-2 border-white/10" />
-          <div className="absolute top-0 right-0 w-2 h-2 bg-acm-blue" />
-        </div>
-      </div>
-
-      <div className="absolute bottom-20 left-8 md:bottom-28 md:left-12">
-        <div className="w-20 h-20 md:w-24 md:h-24 border-l-2 border-b-2 border-white/10" />
-      </div>
-
-      <div className="absolute bottom-20 right-8 md:bottom-28 md:right-12">
-        <div className="w-20 h-20 md:w-24 md:h-24 border-r-2 border-b-2 border-white/10" />
-      </div>
-
-      {/* Side Labels */}
-      <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 hidden lg:block">
-        <div className="flex flex-col items-center gap-4">
-          <div className="h-16 w-px bg-linear-to-b from-transparent via-white/20 to-transparent" />
-          <span 
-            className="text-[9px] tracking-[0.5em] text-white/30 uppercase"
-            style={{ fontFamily: "var(--font-body)", writingMode: "vertical-lr", transform: "rotate(180deg)" }}
-          >
-            GGSIPU EDC
-          </span>
-          <div className="h-16 w-px bg-linear-to-b from-transparent via-white/20 to-transparent" />
-        </div>
-      </div>
-
-      <div className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 hidden lg:block">
-        <div className="flex flex-col items-center gap-4">
-          <div className="h-16 w-px bg-linear-to-b from-transparent via-white/20 to-transparent" />
-          <span 
-            className="text-[9px] tracking-[0.5em] text-white/30 uppercase"
-            style={{ fontFamily: "var(--font-body)", writingMode: "vertical-lr" }}
-          >
-            Est. 2024
-          </span>
-          <div className="h-16 w-px bg-linear-to-b from-transparent via-white/20 to-transparent" />
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <motion.div
-        style={{ opacity, y, scale }}
-        className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 md:px-12 lg:px-20"
-      >
-        <div className="max-w-[1400px] mx-auto w-full text-center">
-          {/* Pre-title Badge */}
+        {/* Animated Gradient Orbs - Like Home Page */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Primary Blue Orb - Top Right */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-10"
-          >
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm">
-              <div className="w-1.5 h-1.5 rounded-full bg-acm-blue" />
-              <span
-                className="text-[10px] md:text-[11px] tracking-[0.4em] text-white/50 uppercase"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                Discover Our Story
-              </span>
-              <div className="w-1.5 h-1.5 rounded-full bg-acm-blue" />
-            </div>
-          </motion.div>
+            animate={{
+              x: [0, 30, 0],
+              y: [0, -20, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute -top-1/4 -right-1/4 h-[800px] w-[800px] rounded-full bg-acm-blue/15 blur-[150px]"
+          />
+          
+          {/* Secondary Orb - Bottom Left */}
+          <motion.div
+            animate={{
+              x: [0, -20, 0],
+              y: [0, 30, 0],
+              scale: [1, 1.15, 1],
+            }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute -bottom-1/4 -left-1/4 h-[700px] w-[700px] rounded-full bg-acm-blue/10 blur-[180px]"
+          />
 
-          {/* Main Title */}
-          <div className="relative mb-4">
-            {/* Title Glow Effect */}
-            <div className="absolute inset-0 blur-3xl opacity-20 pointer-events-none">
-              <div 
-                className="text-[15vw] md:text-[12vw] lg:text-[10vw] font-black text-acm-blue text-center"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                ABOUT
-              </div>
-            </div>
-            
-            <div className="overflow-hidden">
+          {/* Accent Orb - Center */}
+          <motion.div
+            animate={{
+              x: [0, 40, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute top-1/3 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-white/2 blur-[100px]"
+          />
+        </div>
+
+        {/* Gradient Overlays for Smooth Blending */}
+        <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/60 via-transparent to-black/60" />
+        <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-transparent via-black/30 to-black/80" />
+
+        {/* Main Content */}
+        <motion.div
+          style={{ opacity, y: textY }}
+          className="relative z-10 h-full flex flex-col justify-center px-6 md:px-12 lg:px-20"
+        >
+          <div className="max-w-[1400px] mx-auto w-full">
+            {/* Top Row - Logo & Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              <Image
+                src="/ACM_Logo_white_text.webp"
+                alt="ACM Logo"
+                width={100}
+                height={33}
+                className="h-8 w-auto"
+              />
+              <div className="h-px w-8 bg-gray-600" />
+              <span className="font-mono text-xs tracking-[0.2em] text-gray-500">
+                GGSIPU EDC
+              </span>
+            </motion.div>
+
+            {/* Main Title */}
+            <motion.div className="overflow-hidden mb-2">
               <motion.h1
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="relative text-[18vw] sm:text-[15vw] md:text-[12vw] lg:text-[10vw] font-black text-white tracking-normal leading-[0.9]"
+                transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[18vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw] font-bold text-white leading-[0.85] tracking-tight"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 ABOUT
               </motion.h1>
-            </div>
-          </div>
+            </motion.div>
 
-          {/* Subtitle "US" with gradient */}
-          <div className="relative mb-10">
-            <div className="overflow-hidden pt-2">
+            {/* Subtitle with Outline Effect */}
+            <motion.div className="overflow-hidden mb-8">
               <motion.h2
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[25vw] sm:text-[20vw] md:text-[16vw] lg:text-[12vw] font-black tracking-normal leading-none"
+                transition={{ duration: 1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[18vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw] font-bold leading-[0.85] tracking-tight"
                 style={{ 
                   fontFamily: "var(--font-heading)",
-                  background: "linear-gradient(135deg, #0085CA 0%, #00A3E0 50%, #0085CA 100%)",
-                  WebkitBackgroundClip: "text",
+                  WebkitTextStroke: "1.5px rgba(0, 133, 202, 0.5)",
                   WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
                 }}
               >
                 US
               </motion.h2>
-            </div>
-            
-            {/* Decorative line under US */}
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed"
+            >
+              Where <span className="text-white">innovation</span> meets{" "}
+              <span className="text-white">community</span>. Building the future at{" "}
+              <span className="text-acm-blue">GGSIPU</span>.
+            </motion.p>
+
+            {/* Bottom Info - Matching Home Page Style */}
             <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="w-24 h-0.5 bg-linear-to-r from-transparent via-acm-blue to-transparent mx-auto mt-4"
-            />
-          </div>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-white/40 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed mb-14"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            Where <span className="text-white/60">innovation</span> meets <span className="text-white/60">community</span>. 
-            We&apos;re building the future of technology, 
-            <span className="text-acm-blue"> one breakthrough</span> at a time.
-          </motion.p>
-
-          {/* Stats Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 md:gap-12 lg:gap-16"
-          >
-            {[
-              { value: "50+", label: "Active Members", icon: "✦" },
-              { value: "25+", label: "Events Hosted", icon: "◆" },
-              { value: "2024", label: "Chartered", icon: "★" },
-              { value: "12+", label: "Tech Domains", icon: "◈" },
-            ].map((stat, i) => (
-              <div 
-                key={i} 
-                className="group relative text-center"
-              >
-                <div className="relative px-4 py-3">
-                  <div className="text-acm-blue text-sm mb-2 opacity-60">{stat.icon}</div>
-                  <div 
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-1"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div 
-                    className="text-[9px] md:text-[10px] tracking-[0.25em] text-white/30 uppercase"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    {stat.label}
-                  </div>
-                </div>
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="mt-16 flex flex-wrap items-end justify-between gap-8 border-t border-gray-800 pt-8"
+            >
+              <div className="space-y-1">
+                <p className="font-mono text-[10px] uppercase tracking-wider text-gray-600">
+                  Location
+                </p>
+                <p className="text-sm text-gray-300">East Delhi Campus</p>
               </div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-3"
-        >
-          <span 
-            className="text-[9px] tracking-[0.4em] text-white/30 uppercase"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            Scroll
-          </span>
-          <div className="w-px h-10 bg-linear-to-b from-white/30 to-transparent" />
+              <div className="space-y-1">
+                <p className="font-mono text-[10px] uppercase tracking-wider text-gray-600">
+                  Members
+                </p>
+                <p className="text-sm text-gray-300">50+ Active</p>
+              </div>
+
+              <div className="space-y-1">
+                <p className="font-mono text-[10px] uppercase tracking-wider text-gray-600">
+                  Established
+                </p>
+                <p className="text-sm text-gray-300">2024</p>
+              </div>
+
+              {/* Scroll Indicator */}
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="hidden md:block"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-gray-600">
+                    Scroll
+                  </span>
+                  <div className="h-12 w-px bg-linear-to-b from-acm-blue to-transparent" />
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
-      </motion.div>
+      </div>
 
-      {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-[#030303] to-transparent pointer-events-none z-10" />
+      {/* Bottom Gradient for smooth transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-black to-transparent pointer-events-none z-30" />
     </section>
   );
 }

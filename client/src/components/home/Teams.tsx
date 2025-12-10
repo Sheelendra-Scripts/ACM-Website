@@ -8,8 +8,6 @@ import Image from "next/image";
 import {
   facultyMembers,
   officeBearers,
-  technicalTeam,
-  creativeTeam,
   TeamMember,
 } from "@/data/teamData";
 import { TextReveal } from "@/components/TextReveal";
@@ -235,33 +233,7 @@ export default function Teams() {
             </div>
           </div>
 
-          {/* Technical Domain Section */}
-          <div className="mb-24">
-            <SectionHeader
-              index="03"
-              label="Engineers"
-              title="Technical Domain"
-            />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {technicalTeam.map((member, index) => (
-                <MemberCard key={`tech-${member.role}-${index}`} member={member} index={index} />
-              ))}
-            </div>
-          </div>
 
-          {/* Creative Domain Section */}
-          <div className="mb-24">
-            <SectionHeader
-              index="04"
-              label="Creatives"
-              title="Creative Domain"
-            />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {creativeTeam.map((member, index) => (
-                <MemberCard key={`creative-${member.role}-${index}`} member={member} index={index} />
-              ))}
-            </div>
-          </div>
 
           {/* View All CTA */}
           <motion.div

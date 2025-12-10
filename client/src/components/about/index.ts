@@ -1,4 +1,5 @@
 export { default as AboutHero } from "./AboutHero";
+export { default as AboutMarquee } from "./AboutMarquee";
 export { default as WhatIsACM } from "./WhatIsACM";
 export { default as AboutGGSIPU } from "./AboutGGSIPU";
 export { default as AboutChapter } from "./AboutChapter";

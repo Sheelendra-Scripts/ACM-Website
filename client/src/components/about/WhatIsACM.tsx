@@ -147,7 +147,7 @@ export default function WhatIsACM() {
               {/* Logo */}
               <div className="relative w-full aspect-square max-w-[280px] mx-auto">
                 <Image
-                  src="/Association_for_Computing_Machinery_(ACM)_logo.svg.png"
+                  src="/about/Association_for_Computing_Machinery_(ACM)_logo.webp"
                   alt="ACM Logo"
                   fill
                   className="object-contain"
@@ -213,7 +213,7 @@ export default function WhatIsACM() {
                 {/* Logo */}
                 <div className="relative w-full aspect-4/3 max-w-[300px] mx-auto">
                   <Image
-                    src="/indiaacm_logo.jpg"
+                    src="/about/indiaacm_logo.webp"
                     alt="ACM India Logo"
                     fill
                     className="object-contain"

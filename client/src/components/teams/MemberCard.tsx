@@ -12,7 +12,7 @@ interface MemberCardProps {
 
 export default function MemberCard({ member, index }: MemberCardProps) {
   const isTBA = member.name === "TBF" || member.name === "To be filled" || member.name === "To Be Announced" || member.name === "TBD";
-  const hasImage = member.imageUrl && !isTBA;
+  const hasImage = !!member.imageUrl;
 
   return (
     <motion.div
@@ -76,11 +76,11 @@ export default function MemberCard({ member, index }: MemberCardProps) {
                     className="w-24 h-24 rounded-full bg-linear-to-br from-acm-blue/20 to-acm-blue/5 blur-2xl"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div 
+                    <div
                       className="text-4xl font-black text-white/10"
                       style={{ fontFamily: "var(--font-heading)" }}
                     >
-                      {isTBA ? "?" : member.name.charAt(0)}
+                      {member.name.charAt(0)}
                     </div>
                   </div>
                 </div>
@@ -98,7 +98,7 @@ export default function MemberCard({ member, index }: MemberCardProps) {
 
           {/* Index Badge */}
           <div className="absolute top-3 left-3 z-10">
-            <span 
+            <span
               className="text-[10px] tracking-[0.2em] text-white/20 font-medium"
               style={{ fontFamily: "var(--font-body)" }}
             >
@@ -111,7 +111,7 @@ export default function MemberCard({ member, index }: MemberCardProps) {
         <div className="relative p-5 bg-[#0a0a0a]">
           {/* Role Badge */}
           <div className="mb-3">
-            <span 
+            <span
               className="inline-block px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-acm-blue/70 border border-acm-blue/20 bg-acm-blue/5 group-hover:bg-acm-blue/10 group-hover:border-acm-blue/30 transition-all duration-300"
               style={{ fontFamily: "var(--font-body)" }}
             >
@@ -121,11 +121,10 @@ export default function MemberCard({ member, index }: MemberCardProps) {
 
           {/* Name */}
           <h3
-            className={`text-lg md:text-xl font-black tracking-normal transition-all duration-300 mb-3 ${
-              isTBA
-                ? "text-white/20 italic"
-                : "text-white group-hover:text-acm-blue"
-            }`}
+            className={`text-lg md:text-xl font-black tracking-normal transition-all duration-300 mb-3 ${isTBA
+              ? "text-white/20 italic"
+              : "text-white group-hover:text-acm-blue"
+              }`}
             style={{ fontFamily: "var(--font-heading)" }}
           >
             {isTBA ? "To Be Announced" : member.name}

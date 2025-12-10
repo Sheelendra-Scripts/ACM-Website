@@ -135,7 +135,7 @@ export default function AboutGGSIPU() {
               {/* GGSIPU Logo */}
               <div className="relative w-full aspect-4/3 max-w-[280px] mx-auto">
                 <Image
-                  src="/GGSIPU Landscape logo (new).png"
+                  src="/about/GGSIPU Landscape logo (new).webp"
                   alt="GGSIPU EDC Logo"
                   fill
                   className="object-contain"

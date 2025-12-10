@@ -3,23 +3,23 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, Instagram, Linkedin, Github, Mail } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, Mail, Youtube } from "lucide-react";
 
 const socialLinks = [
   { 
     name: "Instagram", 
-    href: "https://instagram.com/acm_ggsipu_edc", 
+    href: "https://instagram.com/usaracm", 
     icon: Instagram 
   },
   { 
     name: "LinkedIn", 
-    href: "https://linkedin.com/company/acm-ggsipu-edc", 
+    href: "https://linkedin.com/company/usaracm", 
     icon: Linkedin 
   },
   { 
-    name: "GitHub", 
-    href: "https://github.com/acm-ggsipu-edc", 
-    icon: Github 
+    name: "YouTube", 
+    href: "https://www.youtube.com/@usaracm", 
+    icon: Youtube 
   },
   { 
     name: "Email", 

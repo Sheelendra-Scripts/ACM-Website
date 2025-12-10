@@ -98,11 +98,11 @@ export default function BlogsFeatured({
 
                 {/* Image Section */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <div 
-                    className="absolute inset-0"
-                    style={{
-                      background: "linear-gradient(135deg, rgba(0,133,202,0.15) 0%, rgba(10,10,20,1) 60%, rgba(0,0,0,1) 100%)",
-                    }}
+                  <Image
+                    src={mainPost.image}
+                    alt={mainPost.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   
                   {/* Hover overlay */}
@@ -277,11 +277,11 @@ function SecondaryCard({
         <div className="flex flex-col sm:flex-row h-full">
           {/* Image */}
           <div className="relative w-full sm:w-2/5 aspect-video sm:aspect-auto overflow-hidden">
-            <div 
-              className="absolute inset-0"
-              style={{
-                background: `linear-gradient(135deg, rgba(0,133,202,${0.1 + index * 0.05}) 0%, rgba(10,10,20,1) 60%, rgba(0,0,0,1) 100%)`,
-              }}
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-linear-to-r from-transparent to-[#0a0a0a] opacity-60" />
             

@@ -1,5 +1,6 @@
 import {
   AboutHero,
+  AboutMarquee,
   WhatIsACM,
   AboutGGSIPU,
   AboutChapter,
@@ -11,6 +12,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#030303] text-white">
       <AboutHero />
+      <AboutMarquee />
       <WhatIsACM />
       <AboutGGSIPU />
       <AboutChapter />

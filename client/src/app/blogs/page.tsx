@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import BlogsHero from "@/components/blogs/BlogsHero";
+import BlogsMarquee from "@/components/blogs/BlogsMarquee";
 import BlogsTransition from "@/components/blogs/BlogsTransition";
 import BlogsFeatured from "@/components/blogs/BlogsFeatured";
 import BlogsGrid from "@/components/blogs/BlogsGrid";
@@ -28,6 +29,9 @@ export default function BlogsPage() {
     <main className="bg-black text-white selection:bg-acm-blue/30">
       {/* Cinematic hero with parallax */}
       <BlogsHero />
+
+      {/* Marquee Section */}
+      <BlogsMarquee />
 
       {/* Transition section with quote */}
       <BlogsTransition />

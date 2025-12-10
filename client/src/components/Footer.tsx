@@ -1,15 +1,16 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { Instagram, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+import { Instagram, Linkedin, Twitter, Mail, ArrowUpRight, Youtube } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
 
 const SOCIAL_LINKS = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Linkedin, href: "https://linkedin.com/company/usaracm", label: "LinkedIn" },
+  { icon: Instagram, href: "https://instagram.com/usaracm", label: "Instagram" },
+  { icon: Twitter, href: "https://x.com/usaracm", label: "X" },
+  { icon: Youtube, href: "https://www.youtube.com/@usaracm", label: "YouTube" },
 ];
 
 const FOOTER_LINKS = [
@@ -17,7 +18,7 @@ const FOOTER_LINKS = [
     title: "Explore",
     links: [
       { label: "About", href: "/about" },
-      { label: "Events", href: "#events" },
+      { label: "Events", href: "/events" },
       { label: "Teams", href: "/teams" },
       { label: "Projects", href: "/projects" },
     ],
@@ -25,17 +26,17 @@ const FOOTER_LINKS = [
   {
     title: "Community",
     links: [
-      { label: "Join ACM", href: "#" },
+      { label: "Join ACM", href: "https://www.acm.org/membership" },
       { label: "Blogs", href: "/blogs" },
-      { label: "Resources", href: "#" },
+      { label: "Resources", href: "https://dl.acm.org/" },
     ],
   },
   {
     title: "Contact",
     links: [
       { label: "usaracm@ipu.ac.in", href: "mailto:usaracm@ipu.ac.in" },
-      { label: "GGSIPU East Delhi", href: "#" },
-      { label: "New Delhi, India", href: "#" },
+      { label: "GGSIPU East Delhi Campus", href: "#" },
+      { label: "Surajmal Vihar, Delhi - 110032", href: "#" },
     ],
   },
 ];
@@ -45,7 +46,7 @@ export default function Footer() {
   const isInView = useInView(footerRef, { once: true, margin: "-100px" });
 
   return (
-    <footer 
+    <footer
       ref={footerRef}
       className="relative w-full bg-[#030303] text-white overflow-hidden overflow-x-hidden"
     >
@@ -58,20 +59,18 @@ export default function Footer() {
         className="absolute -right-[10%] -top-[5%] w-[800px] h-[800px] md:w-[1000px] md:h-[1000px] pointer-events-none"
       >
         <Image
-          src="/ACM_White_Logo_transparent_text.png"
+          src="/ACM_White_Logo_transparent_text.webp"
           alt=""
           fill
           className="object-contain"
         />
       </motion.div>
-      
       {/* Ambient Glow */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-acm-blue/3 blur-[150px] pointer-events-none" />
-      
       {/* Main Content */}
       <div className="relative z-10 px-4 sm:px-6 md:px-12 lg:px-20 pt-16 md:pt-24 lg:pt-32 pb-8">
         <div className="max-w-[1400px] mx-auto">
-          
+
           {/* CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -85,25 +84,26 @@ export default function Footer() {
                 Get Involved
               </span>
             </div>
-            
-            <h2 
+
+            <h2
               className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-white tracking-normal leading-[0.95] mb-6 md:mb-8"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               Let&apos;s Build<br />
               <span className="text-acm-blue">The Future.</span>
             </h2>
-            
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-acm-blue text-white text-sm tracking-[0.2em] uppercase font-medium hover:bg-acm-blue/90 transition-colors"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              <span>Join the Chapter</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </motion.a>
+
+            <Link href="/about" className="inline-block">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-acm-blue text-white text-sm tracking-[0.2em] uppercase font-medium hover:bg-acm-blue/90 transition-colors cursor-pointer"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                <span>Join the Chapter</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </motion.div>
+            </Link>
           </motion.div>
 
           {/* Links Grid */}
@@ -117,7 +117,7 @@ export default function Footer() {
             <div className="md:col-span-5 space-y-6">
               <div className="flex items-center gap-4">
                 <Image
-                  src="/ACM_Logo_white_text.png"
+                  src="/ACM_Logo_white_text.webp"
                   alt="ACM Logo"
                   width={48}
                   height={48}
@@ -130,11 +130,11 @@ export default function Footer() {
                   <span className="text-[10px] tracking-[0.2em] text-white/40 uppercase">Student Chapter</span>
                 </div>
               </div>
-              
+
               <p className="text-white/40 text-sm leading-relaxed max-w-sm" style={{ fontFamily: "var(--font-body)" }}>
                 Fostering a community of developers, designers, and innovators. Creating impact through technology and collaboration.
               </p>
-              
+
               {/* Social Links */}
               <div className="flex gap-3 pt-2">
                 {SOCIAL_LINKS.map((social, index) => (
@@ -154,7 +154,7 @@ export default function Footer() {
             <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8">
               {FOOTER_LINKS.map((section, index) => (
                 <div key={index}>
-                  <h4 
+                  <h4
                     className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/30 mb-6"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
@@ -197,7 +197,7 @@ export default function Footer() {
                 <Mail size={12} />
                 usaracm@ipu.ac.in
               </a>
-              <span className="text-white/20 text-[10px] sm:text-xs">New Delhi, India</span>
+              <span className="text-white/20 text-[10px] sm:text-xs">Surajmal Vihar, Delhi - 110032</span>
             </div>
           </motion.div>
         </div>

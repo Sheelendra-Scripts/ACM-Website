@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import TeamsHero from "@/components/teams/TeamsHero";
+import TeamsMarquee from "@/components/teams/TeamsMarquee";
 import TeamSection from "@/components/teams/TeamSection";
 import CinematicScroll from "@/components/teams/CinematicScroll";
 import TeamsClosing from "@/components/teams/TeamsClosing";
@@ -118,6 +119,9 @@ export default function TeamsPage() {
 
       {/* Hero Section */}
       <TeamsHero />
+
+      {/* Marquee Section */}
+      <TeamsMarquee />
 
       {/* Year Filter */}
       <YearFilter 

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useCallback, useMemo, useRef, useState } from "react";
 import { X, Clock, Calendar, ArrowLeft, Share2, Bookmark, ChevronUp, Users } from "lucide-react";
 import { type BlogPost } from "@/data/blogsData";
+import Image from "next/image";
 import React from "react";
 
 interface BlogReaderProps {
@@ -256,7 +257,18 @@ export default function BlogReader({ post, isOpen, onClose }: BlogReaderProps) {
               transition={{ delay: 0.2 }}
               className="relative min-h-[60vh] md:min-h-[70vh] flex items-end"
             >
-              {/* Background */}
+              {/* Hero Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              
+              {/* Background Overlay */}
               <div
                 className="absolute inset-0"
                 style={{

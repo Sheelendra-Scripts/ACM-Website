@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useRef } from "react";
 import { type BlogPost, categories } from "@/data/blogsData";
 import { ArrowUpRight, Clock, Filter } from "lucide-react";
+import Image from "next/image";
 
 interface BlogsGridProps {
   posts: BlogPost[];
@@ -202,9 +203,9 @@ function BlogCard({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onClick={onClick}
-      className="group cursor-pointer"
+      className="group cursor-pointer h-full"
     >
-      <div className="relative bg-[#0a0a0a] border border-white/5 overflow-hidden transition-all duration-500 hover:border-acm-blue/20">
+      <div className="relative h-full flex flex-col bg-[#0a0a0a] border border-white/5 overflow-hidden transition-all duration-500 hover:border-acm-blue/20">
         {/* Corner Accents */}
         <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-white/10 group-hover:border-acm-blue/40 transition-colors duration-500 z-10" />
         <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-white/10 group-hover:border-acm-blue/40 transition-colors duration-500 z-10" />
@@ -215,12 +216,16 @@ function BlogCard({
         <div className="relative aspect-[16/10] overflow-hidden">
           <motion.div
             className="absolute inset-0"
-            style={{
-              background: `linear-gradient(135deg, rgba(0,133,202,${0.08 + (parseInt(post.id) % 5) * 0.03}) 0%, rgba(10,10,20,1) 60%, rgba(0,0,0,1) 100%)`,
-            }}
             animate={{ scale: isHovered ? 1.1 : 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-          />
+          >
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover"
+            />
+          </motion.div>
           
           {/* Overlay */}
           <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/40 to-transparent opacity-80" />
@@ -265,7 +270,7 @@ function BlogCard({
         </div>
 
         {/* Content Section */}
-        <div className="p-5 md:p-6">
+        <div className="p-5 md:p-6 flex-1 flex flex-col">
           {/* Title */}
           <h3 
             className="text-lg md:text-xl font-black text-white mb-2 group-hover:text-acm-blue transition-colors duration-300 tracking-normal line-clamp-2"
@@ -276,7 +281,7 @@ function BlogCard({
           
           {/* Subtitle */}
           <p 
-            className="text-white/40 text-sm mb-3"
+            className="text-white/40 text-sm mb-3 line-clamp-1"
             style={{ fontFamily: "var(--font-body)" }}
           >
             {post.subtitle}
@@ -296,7 +301,7 @@ function BlogCard({
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between pt-4 border-t border-white/5">
+          <div className="flex items-center justify-between pt-4 border-t border-white/5 mt-auto">
             {/* Author */}
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-full bg-linear-to-br from-acm-blue/30 to-acm-blue/10 border border-white/10 flex items-center justify-center">
