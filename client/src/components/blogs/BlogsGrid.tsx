@@ -28,7 +28,7 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-acm-blue/[0.02] rounded-full blur-[200px]" />
         <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-purple-900/[0.015] rounded-full blur-[150px]" />
-        
+
         {/* Grid pattern */}
         <div
           className="absolute inset-0 opacity-[0.02]"
@@ -50,21 +50,21 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
           className="mb-12 md:mb-16"
         >
           <div className="flex items-center gap-4 mb-6">
-            <span 
+            <span
               className="text-[10px] md:text-[11px] font-medium tracking-[0.3em] text-acm-blue uppercase"
               style={{ fontFamily: "var(--font-body)" }}
             >
               02
             </span>
             <div className="w-12 md:w-20 h-px bg-acm-blue/40" />
-            <span 
+            <span
               className="text-[10px] md:text-[11px] font-light tracking-[0.4em] text-white/30 uppercase"
               style={{ fontFamily: "var(--font-body)" }}
             >
               All Stories
             </span>
           </div>
-          
+
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <h2
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[var(--foreground)] tracking-normal"
@@ -72,11 +72,11 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
             >
               EXPLORE THE <span className="text-acm-blue">ARCHIVE</span>
             </h2>
-            
+
             {/* Post count */}
             <div className="flex items-center gap-3">
               <div className="w-8 h-px bg-white/20" />
-              <span 
+              <span
                 className="text-sm text-white/40"
                 style={{ fontFamily: "var(--font-body)" }}
               >
@@ -96,31 +96,32 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
         >
           <div className="flex items-center gap-4 mb-6">
             <Filter size={14} className="text-white/30" />
-            <span 
+            <span
               className="text-[10px] tracking-[0.3em] text-white/30 uppercase"
               style={{ fontFamily: "var(--font-body)" }}
             >
               Filter by Category
             </span>
           </div>
-          
+
           <div className="flex flex-wrap gap-2 md:gap-3">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`relative px-4 md:px-5 py-2 md:py-2.5 text-xs uppercase tracking-[0.15em] transition-all duration-300 border ${
-                  activeCategory === category
-                    ? "bg-acm-blue/20 border-acm-blue/40 text-acm-blue"
-                    : "bg-white/[0.02] border-white/10 text-white/40 hover:border-white/20 hover:text-white/60"
-                }`}
+                className={`relative px-4 md:px-5 py-2 md:py-2.5 text-xs uppercase tracking-[0.15em] transition-all duration-300 border ${activeCategory === category
+                  ? "bg-acm-blue/20 border-acm-blue/40 text-acm-blue"
+                  : "bg-white/[0.02] border-white/10 text-white/40 hover:border-white/20 hover:text-white/60"
+                  }`}
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 {activeCategory === category && (
                   <motion.div
-                    layoutId="activeCategory"
+                    layoutId={undefined}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     className="absolute inset-0 bg-acm-blue/10 border border-acm-blue/30"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    transition={{ duration: 0.3 }}
                   />
                 )}
                 <span className="relative z-10">{category}</span>
@@ -130,7 +131,7 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
         </motion.div>
 
         {/* Posts Grid */}
-        <motion.div layout className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {filteredPosts.map((post, index) => (
               <BlogCard
@@ -156,7 +157,7 @@ export default function BlogsGrid({ posts, onPostClick }: BlogsGridProps) {
             <div className="w-16 h-16 mx-auto mb-6 border border-white/10 flex items-center justify-center">
               <Filter size={24} className="text-white/20" />
             </div>
-            <p 
+            <p
               className="text-sm text-white/30 uppercase tracking-wider"
               style={{ fontFamily: "var(--font-body)" }}
             >
@@ -190,14 +191,12 @@ function BlogCard({
   return (
     <motion.article
       ref={cardRef}
-      layout
       initial={{ opacity: 0, y: 40, scale: 0.95 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       exit={{ opacity: 0, scale: 0.95, y: -20 }}
       transition={{
         duration: 0.5,
         delay: index * 0.08,
-        layout: { duration: 0.4 },
         ease: [0.22, 1, 0.36, 1],
       }}
       onMouseEnter={onHover}
@@ -226,13 +225,13 @@ function BlogCard({
               className="object-cover"
             />
           </motion.div>
-          
+
           {/* Overlay */}
           <div className="absolute inset-0 bg-linear-to-t from-[var(--surface)] via-black/40 to-transparent opacity-80" />
 
           {/* Category Badge */}
           <div className="absolute top-4 left-4 z-10">
-            <span 
+            <span
               className="px-2.5 py-1 bg-black/60 backdrop-blur-sm border border-white/10 text-[9px] tracking-[0.15em] text-white/60 uppercase"
               style={{ fontFamily: "var(--font-body)" }}
             >
@@ -243,7 +242,7 @@ function BlogCard({
           {/* Read Time Badge */}
           <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5 text-white/40">
             <Clock size={12} />
-            <span 
+            <span
               className="text-[9px] tracking-wider uppercase"
               style={{ fontFamily: "var(--font-body)" }}
             >
@@ -272,15 +271,15 @@ function BlogCard({
         {/* Content Section */}
         <div className="p-5 md:p-6 flex-1 flex flex-col">
           {/* Title */}
-          <h3 
+          <h3
             className="text-lg md:text-xl font-black text-[var(--foreground)] mb-2 group-hover:text-acm-blue transition-colors duration-300 tracking-normal line-clamp-2"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             {post.title}
           </h3>
-          
+
           {/* Subtitle */}
-          <p 
+          <p
             className="text-white/40 text-sm mb-3 line-clamp-1"
             style={{ fontFamily: "var(--font-body)" }}
           >
@@ -310,13 +309,13 @@ function BlogCard({
                 </span>
               </div>
               <div className="flex flex-col">
-                <span 
+                <span
                   className="text-xs text-white/50"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   {post.author.name}
                 </span>
-                <span 
+                <span
                   className="text-[9px] text-acm-blue/60"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
@@ -326,7 +325,7 @@ function BlogCard({
             </div>
 
             {/* Date */}
-            <span 
+            <span
               className="text-[10px] text-white/30 uppercase tracking-wider"
               style={{ fontFamily: "var(--font-body)" }}
             >
@@ -344,7 +343,7 @@ function BlogCard({
             animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -10 }}
             transition={{ duration: 0.3 }}
           >
-            <span 
+            <span
               className="text-[10px] uppercase tracking-wider"
               style={{ fontFamily: "var(--font-body)" }}
             >

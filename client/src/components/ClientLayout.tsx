@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Preloader from "./Preloader";
 import PageTransition from "./PageTransition";
 
@@ -27,11 +27,12 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             </AnimatePresence>
 
             {/* Page content with PageTransition */}
+            {/* Page content with PageTransition */}
             <AnimatePresence mode="wait">
-                <div key={pathname}>
-                    <PageTransition isFirstLoad={isFirstLoad} />
+                <motion.div key={pathname} className="h-full">
+                    <PageTransition isFirstLoad={isFirstLoad} pathname={pathname} />
                     {children}
-                </div>
+                </motion.div>
             </AnimatePresence>
         </>
     );

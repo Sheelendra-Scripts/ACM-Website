@@ -20,7 +20,7 @@ export default function YearFilter({ selectedYear, onYearChange }: YearFilterPro
         {/* Label */}
         <div className="flex items-center gap-4">
           <div className="w-12 md:w-16 h-px bg-linear-to-r from-acm-blue/60 to-transparent" />
-          <span 
+          <span
             className="text-[10px] md:text-[11px] font-light tracking-[0.4em] text-white/40 uppercase"
             style={{ fontFamily: "var(--font-body)" }}
           >
@@ -34,23 +34,24 @@ export default function YearFilter({ selectedYear, onYearChange }: YearFilterPro
             <button
               key={year.value}
               onClick={() => onYearChange(year.value)}
-              className={`relative px-4 md:px-6 py-2.5 md:py-3 transition-all duration-300 ${
-                selectedYear === year.value
+              className={`relative px-4 md:px-6 py-2.5 md:py-3 transition-all duration-300 ${selectedYear === year.value
                   ? "text-[var(--foreground)]"
                   : "text-white/40 hover:text-white/60"
-              }`}
+                }`}
             >
               {/* Active Background */}
               {selectedYear === year.value && (
                 <motion.div
-                  layoutId="activeYearTab"
+                  layoutId={undefined}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
                   className="absolute inset-0 bg-acm-blue/20 border border-acm-blue/30"
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  transition={{ duration: 0.3 }}
                 />
               )}
-              
+
               <span className="relative z-10 flex items-center gap-2">
-                <span 
+                <span
                   className="text-sm md:text-base font-medium tracking-wide"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >

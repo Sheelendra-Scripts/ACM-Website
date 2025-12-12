@@ -15,21 +15,19 @@ export default function CinematicScroll() {
           className="absolute top-0 left-0 w-full bg-acm-blue"
           style={{ height: progressHeight }}
         />
-        
+
         {/* Glow Effect */}
         <motion.div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-acm-blue rounded-full blur-md"
-          style={{ 
-            top: progressHeight,
-            opacity: 0.6,
-          }}
+          className="absolute top-0 left-0 w-full bg-acm-blue blur-[2px]"
+          style={{ height: progressHeight }}
         />
       </div>
 
-      {/* Progress Indicator Dot */}
+      {/* Indicator Dot */}
       <motion.div
         className="relative"
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, 0]) }}
+        animate={{ y: [0, 5, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
         <div className="w-2 h-2 bg-acm-blue rounded-full" />
         <div className="absolute inset-0 w-2 h-2 bg-acm-blue rounded-full animate-ping opacity-30" />
@@ -38,7 +36,7 @@ export default function CinematicScroll() {
       {/* Label */}
       <motion.span
         className="text-[8px] tracking-[0.4em] text-white/30 uppercase"
-        style={{ 
+        style={{
           fontFamily: "var(--font-body)",
           writingMode: "vertical-lr",
         }}
